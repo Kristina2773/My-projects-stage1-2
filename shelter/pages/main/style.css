@@ -1,0 +1,468 @@
+:root {
+    --color-primary: #F1CDB3;
+    --color-primary-light: #FDDCC4;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-grey: #CDCDCD;
+    --color-dark: #292929;
+    --color-dark-xl: #4C4C4C;
+    --color-dark-i: #545454;
+    --color-light-l: #F6F6F6;
+    --color-light-s: #FAFAFA;
+    --color-dark-m: #B2B2B2;
+}
+@font-face {
+    font-family: Arial;
+    src: url("../../assets/fonts/Arial.ttf")
+}
+@font-face {
+    font-family: Georgia;
+    src: url("../../assets/fonts/Georgia.ttf")
+}
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* header */
+.header-container {
+    width: 100%;
+    height: 120px;
+    background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+    /* background: url('../../assets/images/bg.jpg');
+    background-repeat: no-repeat; */
+    background-position: center 0;
+}
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 42px;
+    margin-right: 3.3%;
+    margin-left: 3.125%;
+}
+.nav {
+    margin-top: 1.65%;
+    align-items: center;
+}
+.nav-list {
+    padding: 0;
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+.nav-link {
+    /* padding: 0; */
+    font-family: Arial;
+    font-weight: 400px;
+    /* font-size: 0.9375rem; */
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-grey);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: var(--color-white);
+}
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: width 0.5s;
+}
+.nav-link:hover::after {
+    cursor: pointer;
+    width: 100%;
+}
+.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h1, h2, h3, h4, h5 {
+    font-size: 0;
+    font-weight: normal;
+    margin: 0;
+}
+
+.logo-title{
+    margin-top: 10%;
+    font-family: Georgia;
+    /* font-weight: 400px; */
+    font-size: 2rem;
+    line-height: 110%;
+    letter-spacing: 1.92px;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.logo-subtitle {
+    margin-top: 5.8%;
+    font-family: Arial;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    letter-spacing: 1.25px;
+    text-indent: 2.5%;
+    color: var(--color-white);
+}
+
+/* section-not-only */
+.section-not-only {
+    padding-top: 180px;
+    padding-left: 3.2%; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 910px;
+    background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+    margin-top: -120px;
+}
+
+.not-only-image {
+     padding-right: 3%;
+     display: flex;
+}
+
+.not-only-text {
+     width: 460px;
+     height: 322px;
+     padding-top: 13.3%;
+}
+
+.not-only-title {
+    width: 310px;
+    height: 114px;
+    font-family: Georgia;
+    font-size: 2.75rem;
+    line-height: 3.58rem;
+    color: var(--color-white);
+}
+
+.not-only-paragraph {
+    /* padding-top: 24px; */
+    padding-top: 5.5%;
+    width: 460px;
+    height: 72px;
+    font-family: Arial;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    color: var(--color-grey);
+}
+
+.make-a-friend-btn {
+    margin-top: 11.6%;
+    width: 207px;
+    height: 52px;
+    border: none;
+    border-radius: 100px;
+    font-family: Georgia;
+    font-style: Regular;
+    letter-spacing: 6%;
+    font-size: 1.19rem;
+    line-height: 1.37rem;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+}
+
+.make-a-friend-btn:hover {
+    cursor: pointer;
+    background-color: var(--color-primary-light)
+}
+
+
+
+
+
+
+@media (max-width: 1255px) {
+    html {
+        font-size: 16px;
+    }
+    .header-wrapper {
+        padding-top: 12px;
+        margin-right: 4.2%;
+        margin-left: 3.7%;
+    }
+    .nav {
+        padding-top: 6px;
+    }
+
+    .section-not-only {
+        height: 1165px;
+        padding-top: 0;
+        padding-left: 0;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .not-only-image {
+        padding-right: 0;
+        margin-top: 3%;
+        /* margin-top: 89px; */
+        margin-left: 18%;
+        width: 569px;
+        height: 593px;
+    }
+
+    .not-only-text {
+        padding-top: 0;
+        margin-top: 17%;
+    }
+    .not-only-paragraph {
+        padding-top: 5.7%;
+    }
+    .make-a-friend-btn {
+        /* margin-top: 12%; */
+        margin-left: 27.3%;
+    }
+    .our-friend-card:nth-child(n+3) {
+        display: none;
+    }
+    .pets-container {
+        gap: 11px;
+    }
+    .help-list-item {
+        width: 170px;
+        height: 113px;
+    }
+    .help-list{
+        width: 100%;
+        height: 449px;
+        column-gap: 60px;
+    }
+    .donation-section{
+        height: 783px;
+    }
+    .donation-wrapper {
+        padding-top: 40%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .dog-wait-donation{
+        order: 1;
+    }
+    .footer {
+        padding: 30px 30px 0 30px;
+        height: 635px;
+    }
+    .footer-wrapper{
+        padding-bottom: 0;
+        width: 100%;
+        height: 100%;
+        flex-wrap: wrap;
+        gap: 60px;
+    }
+    .second-footer-wrapper {
+        width: 302px;
+        height: 234px;
+    }
+    .puppy-footer{
+        margin: 0;
+    }
+}
+
+@media (max-width: 850px) {
+    .dog-and-cat {
+        order: 1;
+    }
+    .about-the-shelter-section {
+        margin-top: 5%;
+    }
+    .about-text {
+        margin-top: 5.5%;
+        margin-bottom: -5.5%;
+    }
+    .about-the-shelter-section{
+        height: 1048px;
+    }
+    .help-section{
+        width: 100%;
+        height: 779px;
+    }
+    .donation-section {
+        padding-top: 80px;
+        height: 783px;
+    }
+    .donation-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .section-not-only {
+        height: 1166px;
+    }
+    .about-the-shelter-section {
+        height: 1048px;
+        margin-top: 0;
+        padding: 0;
+    }
+    .not-only-text {
+        margin-top: 19.8%;
+    }
+    .not-only-image {
+        margin-top: 12.5%;
+    } 
+    .about-text {
+        margin-top: 10.5%;
+    }
+    .dog-and-cat {
+        margin-bottom: 13%;
+    } 
+    .pets-cards {
+        gap: 40px;
+    } 
+    .help-section {
+        width: 100%;
+        height: 779px; 
+    }
+    .help-list {
+        column-gap: 60px;
+    }
+    .donation-section {
+        padding-top: 0;
+    }
+    .donation-wrapper {
+        width: 768px;
+        height: 784px;
+        padding-top: 0;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        align-items: center;
+    }
+    .dog-wait-donation {
+        order: 1;
+        margin-bottom: 2.7%;
+    }
+    .footer{
+        height: 639px;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav {
+        display: none;
+    }
+    .not-only-text {
+        margin-top: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: center;
+        align-items: center; */
+        width: 300px;
+        height: 296px;
+    }
+    .not-only-image {
+        width: 260px;
+        height: 271.77px;
+    }
+    .make-a-friend-btn {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .section-not-only {
+        padding-right: 10px;
+        padding-left: 10px;
+        height: 823px;
+        text-align: center;
+        /* justify-content: center;
+        align-items: center; */
+    }
+    .not-only-title {
+        padding: 0;
+        margin: 0;
+        margin: 0 auto;
+        width: 300px;
+        height: 64px;
+        font-size: 1.56rem;
+        line-height: 2rem;
+        letter-spacing: 6%;
+    }
+    .not-only-paragraph {
+        padding: 0;
+        margin: 0;
+        width: 300px;
+        height: 96px;
+    }
+
+    .about-section-title{
+        width: 300px;
+        height: 64px;
+        font-size: 1.56rem;
+        line-height: 2.03rem;
+    }
+    .about-the-shelter-section {
+        padding-right: 10px;
+        padding-left: 10px;
+        text-align: center;
+    }
+    .dog-and-cat {
+        width: 260px;
+        height: 353px;
+    }
+
+    .our-friend-card:nth-child(n+2) {
+        display: none;
+    }
+    .section-title {
+        width: 320px;
+    }
+    .mobile {
+        text-align: center;
+        font-family: Georgia;
+        font-size: 1.56rem;
+        line-height: 2rem;
+        color: var(--color-dark-i);
+    }
+    .pets-container {
+        flex-wrap: wrap;
+        gap: 80px;
+        /* flex-direction: column; */
+    }
+    .prev {
+        order: 1;
+    }
+    .next {
+        order: 2;
+    }
+    .help-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .help-list-item {
+        width: 130px;
+        height: 87px;
+    }
+    .help-item-title {
+        font-size: 0.94rem;
+        line-height: 1rem;
+    }
+
+}

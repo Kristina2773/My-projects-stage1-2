@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter</title>
+    <link rel = "stylesheet" href = "normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+    <header class="header-container container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <h1 class="logo-title">Cozy House</h1>
+                <div class="logo-subtitle">Shelter for pets in Boston</div>
+            </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"> 
+                            <a href="../main/index.html" class="nav-link">About the shelter</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="../pets/index.html" class="nav-link active">Our pets</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="../main/index.html#help" class="nav-link">Help the shelter</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="#contacts" class="nav-link">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+        </div>
+    </header>
+    <main class="main-container">
+        <div class="our-friends-wrapper container">
+            <section class="our-friends-section">
+                <h3 class="section-title mobile">Our friends who <br> are looking for a house</h3>
+                <div class="pets-cards"></div>
+                <div class="our-friends-buttons">
+                    <button class="btn-slider prev-prev" name="button" disabled>< <</button>
+                    <button class="btn-slider prev" name="button" disabled><</button>
+                    <button class="btn-slider page" name="button">1</button>
+                    <button class="btn-slider next" name="button">></button>
+                    <button class="btn-slider next-next" name="button">> ></button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer container" id ="contacts">
+        <div class="footer-wrapper">
+            <div class="first-footer-wrapper">
+                <h3 class="footer-title">For questions and suggestions</h3>
+                <a href="mailto:email@shelter.com" class="footer-link">
+                    <img src="../../assets/icons/icon-email.svg" alt="icon-email" class="icon-footer">
+                    <h4 class="section-subtitle">email@shelter.com</h4>
+                </a>
+                <a href="tel:+136745677554" class="footer-link">
+                    <img src="../../assets/icons/icon-phone.svg" alt="icon-phone" class="icon-footer">
+                    <h4 class="section-subtitle">+13 674 567 75 54</h4>
+                </a>
+            </div>
+            <div class="second-footer-wrapper">
+                <h3 class="footer-title f-title">We are waiting for your visit</h3>
+                <a href="https://www.google.ru/maps/search/1+Central+Street,+Boston+(entrance+from+the+store)/@42.3533532,-71.0751972,14z/data=!3m1!4b1" class="footer-link" target ="_blank">
+                    <img src="../../assets/icons/icon-marker.svg" alt="icon-marker" class="icon-footer">
+                    <h4 class="section-subtitle">1 Central Street, Boston (entrance from the store)</h4>
+                </a>
+                <a href="https://www.google.ru/maps/search/18+South+Park,+London/@51.4313399,-0.1672218,12z/data=!3m1!4b1" class="footer-link" target ="_blank">
+                    <img src="../../assets/icons/icon-marker.svg" alt="icon-marker" class="icon-footer">
+                    <h4 class="section-subtitle">18 South Park, London</h4>
+                </a>
+            </div>
+            <img src="../../assets/images/footer-puppy.png" class="puppy-footer" alt="puppy licks the screen">
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -340,7 +340,134 @@ h1, h2, h3, h4, h5 {
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     background-color: var(--color-white);
 }
+/* help-section */
 
+
+ul.help-list {
+    margin: 0;
+    padding: 0;
+}
+
+.help-section {
+    margin: 0 auto;
+    padding-top: 80px;
+    width: 90%;
+    height: 611px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.help-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    column-gap: 120px;
+    row-gap: 55px;
+}
+
+.help-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.help-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.help-item-title {
+    text-align: center;
+    font-family: Georgia;
+    font-size: 1.25rem;
+    line-height: 1.44rem;
+    letter-spacing: 1.2px;
+    color: var(color-dark-i);
+}
+
+/* donation-section */
+.donation-section {
+    width: 100%;
+    height: 464px;
+    background-color: var(--color-light-l);
+}
+.donation-wrapper {
+    width: 915px;
+    height: 362px;
+    margin: 0 auto;
+    padding-top: 80px;  
+    display: flex;
+    gap: 30px;
+}
+.dog-wait-donation {
+    margin-top: 1.3%;
+    width: 505px;
+    height: 261px;
+}
+.donation-title {
+    text-align: left;
+}
+.donation-subtitle {
+    margin-top: 1px;
+    font-family: Georgia;
+    font-size: 15px;
+    line-height: 16.5px;
+    letter-spacing: 0.9px;
+    color: var(--color-dark-i);
+}
+.donation-text {
+    margin-top: 0.6%;
+    font-family: Arial;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.75rem;
+    line-height: 18px;
+    color: var(--color-dark-m);
+}
+
+.wrapper-text-donation {
+    width: 380px;
+    height: 282px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-number-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-radius: 9px;
+    width: 349px;
+    height: 43px;
+    background: var(--color-primary);
+    text-decoration: none;
+}
+
+.card-number-link:hover {
+    background: var(--color-primary-light);
+    border: 2px solid var(--color-primary-light);
+}
+.card-number {
+    width: 274px;
+    height: 23px;
+    font-family: Georgia;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: 1.1px;
+    color: var(--color-dark-i);
+}
+.card-img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30px;
+    height: 23px;
+}
 
 
 

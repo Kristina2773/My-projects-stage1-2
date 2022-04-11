@@ -40,6 +40,22 @@ const helpShelter = {
 
 }
 
+const burgerBtn = document.querySelector('.burger-btn'),
+      navigation = document.querySelector('.nav');
+
+
+function closeMenu(e) {
+    if (e.target.classList.contains('nav-link')) {
+            burgerBtn.classList.remove('active');
+            navigation.classList.remove('show');
+    }
+}
+
+burgerBtn.addEventListener('click', () => {
+burgerBtn.classList.toggle('active');
+navigation.classList.toggle('show');
+});
+
 let helpShelterLength = Object.values(helpShelter).length;
 
 console.log(helpShelterLength)

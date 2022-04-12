@@ -92,6 +92,22 @@ const petsInfo = [
     }
   ]
 
+  const burgerBtn = document.querySelector('.burger-btn'),
+      navigation = document.querySelector('.nav');
+
+
+function closeMenu(e) {
+    if (e.target.classList.contains('nav-link')) {
+            burgerBtn.classList.remove('active');
+            navigation.classList.remove('show');
+    }
+}
+
+burgerBtn.addEventListener('click', () => {
+burgerBtn.classList.toggle('active');
+navigation.classList.toggle('show');
+});
+
   let petsCards = document.querySelector('.pets-cards');
 
   for(let i = 0; i < petsInfo.length; i++) {

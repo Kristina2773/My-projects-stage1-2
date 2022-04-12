@@ -303,6 +303,10 @@ h1, h2, h3, h4, h5 {
     text-align: center;
     background: inherit;
 }
+.our-friend-card:hover .learn-more-btn {
+    background: var(--color-primary-light);
+    border: 2px solid var(--color-primary-light);
+}
 .learn-more-btn:hover {
     cursor: pointer;
     background: var(--color-primary-light);

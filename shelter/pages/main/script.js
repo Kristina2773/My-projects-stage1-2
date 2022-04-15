@@ -41,20 +41,42 @@ const helpShelter = {
 }
 
 const burgerBtn = document.querySelector('.burger-btn'),
-      navigation = document.querySelector('.nav');
+      navigation = document.querySelector('.nav'),
+      links = document.querySelectorAll('.nav-link'),
+      navLogo = document.querySelector('.nav-logo'),
+      logo = document.querySelector('.logo');
 
+let width = document.querySelector('body').offsetWidth;
 
+if (width <= 767) {
+  navigation.classList.add('nav-none');
+}
 function closeMenu(e) {
     if (e.target.classList.contains('nav-link')) {
             burgerBtn.classList.remove('active');
             navigation.classList.remove('show');
     }
+    if (navigation.classList.contains('nav-none')) {
+      navigation.classList.remove('nav-none');
+    } else {
+      setTimeout(() => {navigation.classList.add('nav-none')}, 1000);
+    }
 }
 
 burgerBtn.addEventListener('click', () => {
-burgerBtn.classList.toggle('active');
-navigation.classList.toggle('show');
+    burgerBtn.classList.toggle('active');
+    navigation.classList.toggle('show');
+    navLogo.classList.toggle('show');
+    logo.classList.toggle('close');
+
+    if (navigation.classList.contains('nav-none')) {
+      navigation.classList.remove('nav-none');
+    } else {
+      setTimeout(() => {navigation.classList.add('nav-none')}, 1000);
+    }
 });
+
+links.forEach((element) => element.addEventListener('click', closeMenu));
 
 let helpShelterLength = Object.values(helpShelter).length;
 

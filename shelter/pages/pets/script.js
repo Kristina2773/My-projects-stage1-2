@@ -94,14 +94,26 @@ const petsInfo = [
 
   const burgerBtn = document.querySelector('.burger-btn'),
       navigation = document.querySelector('.nav'),
-      width = document.querySelector('body').offsetWidth,
       links = document.querySelectorAll('.nav-link'),
       navLogo = document.querySelector('.nav-logo'),
       logo = document.querySelector('.logo');
 
-if (width <= 767) {
-  navigation.classList.add('nav-none');
-}
+let width = document.querySelector('body').offsetWidth;
+
+  if (width <= 767) {
+    navigation.classList.add('nav-none');
+  } else if (width > 767) {
+      navigation.classList.remove('nav-none');
+  }
+      
+  window.addEventListener('resize', function() {
+    width = document.querySelector('body').offsetWidth;
+    if (width <= 767) {
+      navigation.classList.add('nav-none');
+    } else if (width > 767) {
+      navigation.classList.remove('nav-none');
+    }
+      })
 function closeMenu(e) {
     if (e.target.classList.contains('nav-link')) {
             burgerBtn.classList.remove('active');

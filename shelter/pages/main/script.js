@@ -50,7 +50,18 @@ let width = document.querySelector('body').offsetWidth;
 
 if (width <= 767) {
   navigation.classList.add('nav-none');
+} else if (width > 767) {
+    navigation.classList.remove('nav-none');
 }
+
+window.addEventListener('resize', function() {
+    width = document.querySelector('body').offsetWidth;
+    if (width <= 767) {
+        navigation.classList.add('nav-none');
+    } else if (width > 767) {
+        navigation.classList.remove('nav-none');
+    }
+})
 function closeMenu(e) {
     if (e.target.classList.contains('nav-link')) {
             burgerBtn.classList.remove('active');

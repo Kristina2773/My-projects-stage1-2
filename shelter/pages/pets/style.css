@@ -317,6 +317,134 @@ h1, h2, h3, h4, h5 {
     gap: 20px;
 }
 
+/* popap */
+.popap-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 877px;
+    background-color: rgba(41, 41, 41, 0.6);
+    z-index: 5;
+}
+.popap-wrapper.show {
+    display: block;
+}
+.popap-wrapper.hidden {
+    display: none;
+}
+.modal {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    max-width: 952px; 
+    height: 552px;
+    margin: 28px auto;
+    left: 2%;
+    z-index: 6;
+}
+
+.popap-content {
+    display: flex;
+    width: 900px;
+    height: 500px;
+    border-radius: 9px;
+    gap: 29px;
+    background: var(--color-white);
+}
+.popap-button {
+    cursor: pointer;
+    margin-left: 93.5%;
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    background: inherit;
+}
+.popap-pet-name {
+    font-family: Georgia;
+    font-size: 35px;
+    line-height: 45.5px;
+    letter-spacing: 2px;
+    color: var(--color-black);
+}
+.popap-pet-breed {
+    font-family: Georgia;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 1.3px;
+    color: var(--color-black);
+}
+.popap-text {
+    width: 350px;
+    height: 102px;
+    font-family: Georgia;
+    font-size: 15px;
+    font-weight: 400px;
+    line-height: 17px;
+    letter-spacing: 0.9px;
+    color: var(--color-black);
+}
+.popap-description {
+    width: 351px;
+    height: 362px;
+    margin-top: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.popap-dog {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.popap-list {
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+   
+}
+.popap-pet-img {
+    width: 500px;
+    height: 500px;
+    border-radius: 9px;
+}
+.popap-list > li {
+    font-family: Georgia;
+    font-size: 15px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    list-style-type: none;
+}
+.popap-list > li:before {
+    margin-right: 10px;
+    color: var(--color-primary);
+    content: "•";
+}
+.bold {
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.popap-wrapper:hover {
+    cursor: pointer;
+}
+
+.popap-wrapper:hover .popap-button{
+    background: var(--color-primary-light);
+}
+.modal:hover .popap-button {
+    background: var(--color-primary-light);
+}
+.popap-content:hover {
+    cursor: default;
+}
+.popap-content:hover + .popap-button {
+    background: inherit;
+}
+
 
 @media (max-width: 1279px) {
     .logo {
@@ -381,6 +509,50 @@ h1, h2, h3, h4, h5 {
     }
     .our-friends-buttons {
         margin-top: 10px;
+    }
+
+     /* popap */
+     .popap-wrapper {
+        width: 100%;
+        height: 877px;    
+    }
+    .modal {
+        top: 50px;
+        left: 3.1%;
+        width: 682px;
+        height: 402px;
+    }
+    .popap-content {
+        gap: 10px;
+        width: 630px;
+        height: 350px;
+    }
+    .popap-pet-img {
+        width: 350px;
+        height: 350px;
+    }
+    .popap-button {
+        margin-left: 91%;
+    }
+    .popap-pet-name {
+        font-size: 35px;
+        line-height: 45.5px;
+        letter-spacing: 2px;
+    }
+    .popap-description {
+        margin-top: 0;
+        gap: 20px;
+        margin-top: 10px;
+    }
+    .popap-text{
+        width: 265px;
+        height: 98px;
+        font-size: 13px;
+        line-height: 14px;
+        letter-spacing: 0.06em;
+    }
+    .popap-list {
+        gap: 7px;
     }
     
     
@@ -618,5 +790,63 @@ h1, h2, h3, h4, h5 {
     }
     .f-link {
         margin-right: 30px;
+    }
+
+    /* popap */
+
+    .popap-wrapper{
+        height: 791px;
+    }
+    .modal {
+        top: 139px;
+        /* top: 20px; */
+        left: 4.1%;
+        width: 271px;
+        height: 393px;
+    }
+    .popap-pet-img {
+        display: none;
+    }
+    .popap-button {
+        margin-left: 80%;
+    }
+    .popap-content {
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        width: 240px;
+        height: 341px;
+    }
+
+    .popap-pet-name {
+        text-align: center;
+    }
+    .popap-pet-breed {
+        font-size: 16px;
+        line-height: 23px;
+        letter-spacing: 1px;
+        margin: 0 auto;
+        /* text-align: stretch; */
+    }
+    .popap-text {
+        text-align: justify;
+        width: 220px;
+        height: 112px;
+        line-height: 14px;
+        letter-spacing: 0.06em;
+    }
+    .popap-dog {
+        gap: 10px;
+    }
+    .popap-description {
+        margin-top: 40px;
+        gap: 18px;
+    }
+    .popap-list {
+        gap: 2px;
+        margin-left: -1px;
+    }
+    .popap-list > li {
+        font-size: 13px;
     }
 }

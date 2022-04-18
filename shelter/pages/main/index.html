@@ -74,7 +74,7 @@
                 <div class="pets-container">
                     <button class="btn-slider prev" name="button">&larr;</button> 
                     <div class="pets-cards">
-                        <div class="our-friend-card">
+                        <!-- <div class="our-friend-card">
                             <img src="../../assets/images/pets-katrine.png" class="pets" alt="pet">
                             <p class="pets-name">Katrine</p>
                             <button class="learn-more-btn" name="button">Learn more</button>
@@ -88,11 +88,12 @@
                             <img src="../../assets/images/pets-woody.png" class="pets" alt="pet">
                             <p class="pets-name">Woody</p>
                             <button class="learn-more-btn" name="button">Learn more</button>
-                        </div>
+                        </div> -->
                     </div>
                     <button class="btn-slider next" name="button">	&rarr;</button>
                 </div>
                 <button class="know-more-btn" name="button" onclick = "window.location.href='../pets/index.html'">Get to know the rest</button>
+
             </section>
             <section class="help-section" id = "help">
                 <h3 class="section-title mobile help-title">How you can help <br>our shelter</h3>
@@ -142,9 +143,15 @@
             </div>
             <img src="../../assets/images/footer-puppy.png" class="puppy-footer" alt="puppy licks the screen">
         </div>
-        <!-- <img src="../../assets/images/footer-puppy.png" class="puppy-footer" alt="puppy licks the screen"> -->
     </footer>
-    <script src="script.js"></script>
+    <div class="popap-wrapper hidden" data-close>
+        <div class="modal">
+            <div class="popap-content"></div>  
+            <button class="popap-button" name="button" data-close>&#10006;</button> 
+        </div>
+    </div> 
     
+    <script type="module" src="script.js"></script>
+
 </body>
 </html>

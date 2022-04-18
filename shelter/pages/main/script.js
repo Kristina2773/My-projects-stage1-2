@@ -1,45 +1,10 @@
 `use strict`;
 
-const helpShelter = {
-    0: {
-        icon: '../../assets/icons/icon-pet-food.svg',
-        title: 'Pet food',
-    },
-    1: {
-        icon: '../../assets/icons/icon-transportation.svg',
-        title: 'Transportation',
-    },
-    2: {
-        icon: '../../assets/icons/icon-toys.svg',
-        title: 'Toys',
-    },
-    3: {
-        icon: '../../assets/icons/icon-bowls-and-cups.svg',
-        title: 'Bowls and cups',
-    },
-    4: {
-        icon: '../../assets/icons/icon-shampoos.svg',
-        title: 'Shampoos',
-    },
-    5: {
-        icon: '../../assets/icons/icon-vitamins.svg',
-        title: 'Vitamins',
-    },
-    6: {
-        icon: '../../assets/icons/icon-medicines.svg',
-        title: 'Medicines',
-    },
-    7: {
-        icon: '../../assets/icons/icon-collars-or-leashes.svg',
-        title: 'Collars / leashes',
-    },
-    8: {
-        icon: '../../assets/icons/icon-sleeping-area.svg',
-        title: 'Sleeping areas',
-    }
+import pets from '../../js/pets.js';
+import helpShelter from '../../js/helpShelter.js';
 
-}
 
+// opening - closing menu
 const burgerBtn = document.querySelector('.burger-btn'),
       navigation = document.querySelector('.nav'),
       links = document.querySelectorAll('.nav-link'),
@@ -89,9 +54,10 @@ burgerBtn.addEventListener('click', () => {
 
 links.forEach((element) => element.addEventListener('click', closeMenu));
 
+// form a grid in help-shelter section
+
 let helpShelterLength = Object.values(helpShelter).length;
 
-console.log(helpShelterLength)
 
 for(let i = 0; i < helpShelterLength; i++) {
     let helpList = document.querySelector('.help-list');
@@ -108,3 +74,131 @@ for(let i = 0; i < helpShelterLength; i++) {
     titleListItem.textContent = helpShelter[i].title;
     helpListItem.append(titleListItem);
 }
+
+// render pets-cards
+class petCard {
+    constructor(src, alt, name, popap, parentSelector) {
+        this.src= src;
+        this.alt= alt;
+        this.name = name;
+        this.popap = popap;
+        this.parent = document.querySelector(parentSelector);
+    }
+  
+    render() {
+        const element = document.createElement('div');
+        element.classList.add('our-friend-card');
+        element.setAttribute('data-popap', this.popap);
+        element.innerHTML = ` 
+            <img src=${this.src} class="pets" alt=${this.alt} data-popap=${this.popap}>
+            <p class="pets-name" data-popap=${this.popap}>${this.name}</p>
+            <button class="learn-more-btn" name="button" data-popap=${this.popap}>Learn more</button>
+        </div>
+        `;
+        this.parent.append(element);
+    
+    }
+  }
+  
+  for (let i = 0; i < pets.length - 5; i++) {
+    new petCard (
+        pets[i].img,
+        pets[i].alt,
+        pets[i].name,
+        pets[i].name,
+        '.pets-cards'
+    ).render();
+  }
+  
+  
+  // render pet modal
+  class popapPet {
+    constructor(src, alt, name, type, breed, text, age, inoculations, diseases, parasites, parentSelector) {
+        this.src= src;
+        this.alt= alt;
+        this.name = name;
+        this.type = type;
+        this.breed = breed;
+        this.text = text;
+        this.age = age;
+        this.inoculations = inoculations;
+        this.diseases = diseases;
+        this.parasites = parasites;
+        this.parent = document.querySelector(parentSelector);
+    }
+  
+    renderPopap() {
+        const element = document.querySelector('.popap-content');
+        element.innerHTML = ` 
+                    <img src=${this.src} alt=${this.alt} class="popap-pet-img">
+                        <div class="popap-description">
+                            <div class="popap-dog">
+                                <h3 class="popap-pet-name">${this.name}</h3>
+                                <h4 class="popap-pet-breed">${this.type} - ${this.breed}</h4>
+                        </div>
+                        <h5 class="popap-text">${this.text}</h5>
+                        <ul class="popap-list">
+                            <li><span class="bold">Age:</span> ${this.age}</li>
+                            <li><span class="bold">Inoculations:</span>  ${this.inoculations}</li>
+                            <li><span class="bold">Diseases:</span> ${this.diseases}</li>
+                            <li><span class="bold">Parasites:</span> ${this.parasites}</li>
+                        </ul>
+        `;
+        } 
+    }
+  
+  
+  // opening-closing pet-modal
+  
+  function formPopap(event) {
+    const target = event.target;
+    for (let i = 0; i < pets.length; i++) {
+        if(pets[i].name == target.dataset.popap) {
+            new popapPet (
+                pets[i].img,
+                pets[i].alt,
+                pets[i].name,
+                pets[i].type,
+                pets[i].breed,
+                pets[i].description,
+                pets[i].age,
+                pets[i].inoculations,
+                pets[i].diseases,
+                pets[i].parasites,
+            ).renderPopap();
+        }
+    }
+  }
+  
+  const popap = document.querySelector('.popap-wrapper');
+  const popapBtn = document.querySelector('.popap-button');
+  const popapTrigger = document.querySelectorAll('[data-popap]');
+  const popapContent = document.querySelector('.popap-content');
+  const closeContent = document.querySelector('[data-close]');
+  
+  function showModalContent() {
+    popap.classList.remove('hidden'); 
+    popap.classList.add('show'); 
+  }
+  
+  function closeModalContent() {
+    popap.classList.add('hidden');
+    popap.classList.remove('show');
+    popapContent.innerHTML = ``; 
+  }
+  
+  popapTrigger.forEach(item => { 
+    item.addEventListener('click', (event) => {
+        formPopap(event)
+        showModalContent();
+    });
+  });
+  
+  // popapTrigger.forEach((item) => item.addEventListener('click', (event) => formPopap(event)));
+  
+  closeContent.addEventListener('click', (e) => {
+    const tar = e.target;
+    if(tar.classList.contains('popap-wrapper') || tar.classList.contains('popap-button') || tar.classList.contains('modal')) {
+     closeModalContent();
+    }
+  });

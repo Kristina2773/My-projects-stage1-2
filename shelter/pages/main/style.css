@@ -32,6 +32,13 @@ body{
     padding: 0;
 }
 
+.hidden-overflow {
+    overflow-y: hidden;
+}
+.overflow-visible {
+    overflow: scroll;
+}
+
 .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -57,6 +64,16 @@ body{
     margin-left: 3.125%; */
     margin-right: 42.24px;
     margin-left: 40px;
+}
+
+.nav-wrapper.grey {
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 877px;
+    background-color: rgba(41, 41, 41, 0.6);
+    z-index: 20;
 }
 .nav {
     margin-top: 1.65%;
@@ -276,6 +293,26 @@ h1, h2, h3, h4, h5 {
     display: flex;
     gap: 90px;
     align-items: center;
+    overflow-x: hidden;
+}
+.pets-wrap {
+    display: flex;
+    gap: 90px;
+    width: 990px;
+    height: 435px;
+}
+
+.pets-wrap.transition {
+    transition: all 0.9s ease 0s;
+}
+@keyframes offset {
+    from {
+        transform: transplate(-100%, 0);
+    }
+
+    to {
+        transform: transplate(0, 0);
+    }
 }
 .our-friend-card {
     padding-bottom: 30px;
@@ -286,6 +323,10 @@ h1, h2, h3, h4, h5 {
     justify-content: space-between;
     background: var(--color-light-s);
 }
+/* .our-friend-card:first-child, .our-friend-card:nth-child(2), .our-friend-card:nth-child(3) {
+    animation-name: offset;
+    animation-duration: 0.5s;
+} */
 
 .pets-container {
     display: flex;
@@ -350,6 +391,7 @@ h1, h2, h3, h4, h5 {
     color: var(--color-dark);
     border: 2px solid var(--color-primary);
     background: inherit;
+    /* z-index: 1; */
 }
 .btn-slider:hover{
     cursor: pointer;
@@ -564,6 +606,16 @@ ul.help-list {
     width: 302px;
 }
 
+@keyframes fade {
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 /* popap */
 .popap-wrapper {
     position: fixed;
@@ -587,6 +639,8 @@ ul.help-list {
     max-width: 952px; 
     margin: 28px auto;
     left: 2%;
+    animation-name: fade;
+    animation-duration: 0.5s;
 }
 
 .popap-content {
@@ -596,6 +650,7 @@ ul.help-list {
     border-radius: 9px;
     gap: 29px;
     background: var(--color-white);
+    padding-bottom: 5px;
 }
 .popap-pet-img {
     width: 500px;
@@ -747,11 +802,15 @@ ul.help-list {
         /* margin-top: 12%; */
         margin-left: 27.3%;
     }
-    .our-friend-card:nth-child(n+3) {
+    /* .our-friend-card:nth-child(n+3) {
         display: none;
-    }
+    } */
     .pets-container {
         gap: 11px;
+    }
+    .pets-wrap {
+        width: 580px;
+        gap: 40px;
     }
     .about-the-shelter-section{
         flex-direction: column;
@@ -929,7 +988,7 @@ ul.help-list {
         right: -320px;
         animation-name: show;
         animation-duration: 1.4s;
-        z-index: 1;
+        z-index: 150;
         /* height: 100%; */
         margin-top: -4%;
         height: 863px;
@@ -954,7 +1013,7 @@ ul.help-list {
         margin: 29px 0;
         width: 30px;
         height: 22px;
-        z-index: 2;
+        z-index: 200;
     }
     
     .burger-btn.active .line:nth-child(1){
@@ -978,6 +1037,11 @@ ul.help-list {
         cursor: pointer;
         transition: 0.5s;
     }
+    .nav {
+        padding-bottom: 200px;
+        overflow: auto;
+    }
+    
     .nav-logo {
         position: absolute;
         left: calc(100% - 310px);
@@ -1123,9 +1187,9 @@ ul.help-list {
         gap: 35px;
     }
 
-    .our-friend-card:nth-child(n+2) {
+    /* .our-friend-card:nth-child(n+2) {
         display: none;
-    }
+    } */
     .our-friend-card {
         margin-top: -6.3%;
     }
@@ -1175,7 +1239,10 @@ ul.help-list {
         position: relative;
         bottom: 3%;
     }
-
+    .pets-wrap {
+        width: 270px;
+        gap: 40px;
+    }
 
     /* help-section */
     .help-section {

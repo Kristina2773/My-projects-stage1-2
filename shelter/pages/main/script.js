@@ -3,13 +3,14 @@
 import pets from '../../js/pets.js';
 import helpShelter from '../../js/helpShelter.js';
 
-
+window.addEventListener('DOMContentLoaded', () => {
 // opening - closing menu
 const burgerBtn = document.querySelector('.burger-btn'),
       navigation = document.querySelector('.nav'),
       links = document.querySelectorAll('.nav-link'),
       navLogo = document.querySelector('.nav-logo'),
-      logo = document.querySelector('.logo');
+      logo = document.querySelector('.logo'),
+      navWrapper = document.querySelector('.nav-wrapper');
 
 let width = document.querySelector('body').offsetWidth;
 
@@ -27,28 +28,46 @@ window.addEventListener('resize', function() {
         navigation.classList.remove('nav-none');
     }
 })
-function closeMenu(e) {
-    if (e.target.classList.contains('nav-link')) {
+function closeMenu() {
+            document.documentElement.classList.remove('hidden-overflow');
             burgerBtn.classList.remove('active');
             navigation.classList.remove('show');
-    }
+            navWrapper.classList.remove('grey');
+    
     if (navigation.classList.contains('nav-none')) {
       navigation.classList.remove('nav-none');
+      navWrapper.classList.add('grey');
     } else {
-      setTimeout(() => {navigation.classList.add('nav-none')}, 1000);
+        setTimeout(() => {
+            navigation.classList.add('nav-none');
+            navWrapper.classList.remove('grey');
+          }, 1000);
     }
 }
 
+navWrapper.addEventListener('click', (event) => {
+    if (event.target.classList.contains('nav-wrapper')) {
+      closeMenu();
+    }
+});
+
 burgerBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('hidden-overflow');
     burgerBtn.classList.toggle('active');
     navigation.classList.toggle('show');
-    navLogo.classList.toggle('show');
-    logo.classList.toggle('close');
+    burgerBtn.classList.add('show');
+    navLogo.classList.add('show');
+    navWrapper.classList.toggle('grey');
+    
 
     if (navigation.classList.contains('nav-none')) {
       navigation.classList.remove('nav-none');
+      navWrapper.classList.add('grey');
     } else {
-      setTimeout(() => {navigation.classList.add('nav-none')}, 1000);
+      setTimeout(() => {
+        navigation.classList.add('nav-none');
+        navWrapper.classList.remove('grey');
+        }, 1000);
     }
 });
 
@@ -99,20 +118,72 @@ class petCard {
     
     }
   }
-  
-  for (let i = 0; i < pets.length - 5; i++) {
-    new petCard (
-        pets[i].img,
-        pets[i].alt,
-        pets[i].name,
-        pets[i].name,
-        '.pets-cards'
-    ).render();
-  }
-  
-  
-  // render pet modal
-  class popapPet {
+
+//   slider
+
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const petsWrap = document.querySelector('.pets-wrap');
+const petsCards = document.querySelector('.pets-cards');
+const widthPetsCards = window.getComputedStyle(petsCards).width;
+
+
+let offset = 0;
+
+for(let i = 0; i < 3; i++) {
+    for (let i = 0; i < pets.length; i++) {
+        new petCard (
+            pets[i].img,
+            pets[i].alt,
+            pets[i].name,
+            pets[i].name,
+            '.pets-wrap'
+        ).render();
+      }
+}
+const ourFriendCards = document.querySelectorAll('.our-friend-card');
+
+
+function formOffsetForNext(gap) {
+    if(offset == (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap) * (ourFriendCards.length / 3 - 1)) {
+        petsWrap.classList.remove('transition');
+        offset = 0;
+    } else {
+        petsWrap.classList.add('transition');
+        offset += (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap);
+    }
+}
+
+function formOffsetForPrev(gap) {
+    if (offset == 0) {
+        petsWrap.classList.remove('transition');
+        offset = (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap) * (ourFriendCards.length / 3 - 1);
+    } else {
+        petsWrap.classList.add('transition');
+        offset -= (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap);
+    }
+}
+
+nextBtn.addEventListener('click', () => {
+    if (width >= 1280) {
+        formOffsetForNext(90);
+    } else if (width < 1280) {
+        formOffsetForNext(40);
+    }
+    petsWrap.style.transform = `translateX(-${offset}px)`;
+});
+prevBtn.addEventListener('click', () => {
+    if (width >= 1280) {
+        formOffsetForPrev(90);
+    } else if (width < 1280) {
+        formOffsetForPrev(40);
+    }
+    petsWrap.style.transform = `translateX(-${offset}px)`;
+});
+
+
+// render pet modal
+class popapPet {
     constructor(src, alt, name, type, breed, text, age, inoculations, diseases, parasites, parentSelector) {
         this.src= src;
         this.alt= alt;
@@ -173,17 +244,22 @@ class petCard {
   const popap = document.querySelector('.popap-wrapper');
   const popapBtn = document.querySelector('.popap-button');
   const popapTrigger = document.querySelectorAll('[data-popap]');
-  const popapContent = document.querySelector('.popap-content');
+  let popapContent = document.querySelector('.popap-content');
   const closeContent = document.querySelector('[data-close]');
+
   
   function showModalContent() {
+    document.documentElement.classList.add('hidden-overflow');
     popap.classList.remove('hidden'); 
     popap.classList.add('show'); 
+    popapContent.classList.add('overflow-visible');
   }
   
   function closeModalContent() {
+    document.documentElement.classList.remove('hidden-overflow');
     popap.classList.add('hidden');
     popap.classList.remove('show');
+    popapContent.classList.remove('overflow-visible');
     popapContent.innerHTML = ``; 
   }
   
@@ -202,3 +278,5 @@ class petCard {
      closeModalContent();
     }
   });
+
+});

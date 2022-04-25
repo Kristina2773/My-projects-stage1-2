@@ -130,34 +130,117 @@ const widthPetsCards = window.getComputedStyle(petsCards).width;
 
 let offset = 0;
 
-for(let i = 0; i < 3; i++) {
-    for (let i = 0; i < pets.length; i++) {
+function sliceArr (arr, size){
+    let result = [];
+    for(let i = 0; i < arr.length; i+=size) {
+      result.push(arr.slice(i, i+size))
+    }
+    return result;
+  }
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
+let indexArr = [];
+let indexArr320 = [];
+
+function createIndexArr() {
+    for(let j = 0; j < 3; j++){
+        for (let i = 0; i < 8; i++) {
+          indexArr.push(i);
+        }
+    }
+}
+
+function resultIndex(indexArr, quantityElements) {
+    console.log(indexArr, quantityElements);
+    resultIndex =  sliceArr(indexArr, quantityElements);
+}
+if (width >= 1280) {
+    createIndexArr();
+    resultIndex(indexArr, 3);
+    shuffleResultIndex();
+} else if (width < 1280 && width >= 768) {
+    createIndexArr();
+    resultIndex(indexArr, 2);
+    shuffleResultIndex();
+} else if(width < 768 && width >= 320) {
+        for (let i = 0; i < 8; i++) {
+            indexArr320.push(i);
+        }
+        shuffle(indexArr320);
+}
+
+function shuffleResultIndex() {
+    // console.log(resultIndex);
+    console.log(resultIndex);
+    for(let i = 0; i < resultIndex.length; i++) {
+        shuffle(resultIndex[i]);
+    }
+} 
+
+// console.log(resultIndex);
+function createCards(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let index = arr[i];
         new petCard (
-            pets[i].img,
-            pets[i].alt,
-            pets[i].name,
-            pets[i].name,
+            pets[index].img,
+            pets[index].alt,
+            pets[index].name,
+            pets[index].name,
             '.pets-wrap'
         ).render();
-      }
+    }
 }
+
+
+if (width >= 1280) {
+    resultIndex = resultIndex.flat();
+    createCards(resultIndex);
+} else if (width < 1280 && width >= 768) {
+    resultIndex = resultIndex.flat();
+    createCards(resultIndex);
+} else if(width < 768 && width >= 320) {
+    createCards(indexArr320);
+}
+
+
 const ourFriendCards = document.querySelectorAll('.our-friend-card');
 
 
-function formOffsetForNext(gap) {
-    if(offset == (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap) * (ourFriendCards.length / 3 - 1)) {
+function formOffsetForNext(gap, n) {
+    if(offset == (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap) * (ourFriendCards.length / n - 1)) {
         petsWrap.classList.remove('transition');
+        if (width >= 1280) {
+            resultIndex =  sliceArr(indexArr, 3);
+            shuffleResultIndex();
+            petsWrap.innerHTML = '';
+            resultIndex = resultIndex.flat();
+            createCards(resultIndex);
+        } else if (width < 1280 && width >= 768) {
+            resultIndex =  sliceArr(indexArr, 2);
+            shuffleResultIndex();
+            petsWrap.innerHTML = '';
+            resultIndex = resultIndex.flat();
+            createCards(resultIndex);
+        } else if(width < 768 && width >= 320) {
+            shuffle(indexArr320);
+            petsWrap.innerHTML = ''; 
+            createCards(indexArr320);
+        }
         offset = 0;
+        
     } else {
         petsWrap.classList.add('transition');
         offset += (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap);
     }
 }
 
-function formOffsetForPrev(gap) {
+function formOffsetForPrev(gap, n) {
     if (offset == 0) {
         petsWrap.classList.remove('transition');
-        offset = (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap) * (ourFriendCards.length / 3 - 1);
+        offset = (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap) * (ourFriendCards.length / n - 1);
     } else {
         petsWrap.classList.add('transition');
         offset -= (+widthPetsCards.slice(0, widthPetsCards.length - 2) + gap);
@@ -166,17 +249,21 @@ function formOffsetForPrev(gap) {
 
 nextBtn.addEventListener('click', () => {
     if (width >= 1280) {
-        formOffsetForNext(90);
-    } else if (width < 1280) {
-        formOffsetForNext(40);
+        formOffsetForNext(90, 3);
+    } else if (width < 1280 && width >=768) {
+        formOffsetForNext(40, 3);
+    } else if (width < 768) {
+        formOffsetForNext(40, 1);
     }
     petsWrap.style.transform = `translateX(-${offset}px)`;
 });
 prevBtn.addEventListener('click', () => {
     if (width >= 1280) {
-        formOffsetForPrev(90);
-    } else if (width < 1280) {
-        formOffsetForPrev(40);
+        formOffsetForPrev(90, 3);
+    } else if (width < 1280 && width >=768) {
+        formOffsetForPrev(40, 3);
+    } else if (width < 768) {
+        formOffsetForPrev(40, 1);
     }
     petsWrap.style.transform = `translateX(-${offset}px)`;
 });

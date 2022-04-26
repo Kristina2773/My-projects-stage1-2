@@ -354,7 +354,7 @@ window.addEventListener('DOMContentLoaded', () => {
     popap.classList.add('hidden');
     popap.classList.remove('show');
     content.classList.add('overflow-visible');
-    popapContent.innerHTML = ``; 
+    content.innerHTML = ''; 
   }
 
   function triggerForPopap () {

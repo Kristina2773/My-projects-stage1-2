@@ -618,6 +618,9 @@ ul.help-list {
 
 /* popap */
 .popap-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items:center;
     position: fixed;
     top: 0;
     left: 0;
@@ -637,7 +640,9 @@ ul.help-list {
     flex-direction: column-reverse;
     position: relative;
     max-width: 952px; 
-    margin: 28px auto;
+    /* margin: 28px auto; */
+    margin: 0 auto;
+    top: 2%;
     left: 2%;
     animation-name: fade;
     animation-duration: 0.5s;
@@ -878,8 +883,8 @@ ul.help-list {
         height: 877px;    
     }
     .modal {
-        top: 50px;
-        left: 3.1%;
+        left: 3%; 
+        top: 3%;
         width: 682px;
         height: 402px;
     }
@@ -1372,9 +1377,10 @@ ul.help-list {
         height: 791px;
     }
     .modal {
-        top: 139px;
+        /* top: 139px;
         /* top: 20px; */
-        left: 4.1%;
+        top: 4%;
+        left: 4%; 
         width: 271px;
         height: 393px;
     }

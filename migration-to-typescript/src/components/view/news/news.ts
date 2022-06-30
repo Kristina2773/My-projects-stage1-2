@@ -10,7 +10,6 @@ class News {
 
         news.forEach((item : ISources, idx: number) => {
             const newsClone = newsItemTemp.content.cloneNode(true);
-            const parent = newsClone as ParentNode;
             if (idx % 2) ((newsClone as ParentNode).querySelector('.news__item') as HTMLElement).classList.add('alt');
             
             ((newsClone as ParentNode).querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'

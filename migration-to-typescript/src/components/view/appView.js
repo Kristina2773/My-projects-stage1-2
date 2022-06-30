@@ -1,5 +1,7 @@
 import News from './news/news';
 import Sources from './sources/sources';
+import IDataNews from '../../types/index';
+import INewsObject from '../../types/index';
 
 export class AppView {
     constructor() {

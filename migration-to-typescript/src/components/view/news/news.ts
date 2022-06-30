@@ -1,5 +1,5 @@
 import './news.css';
-import {IDataNews, ISources} from '../../types/types';
+import {ISources} from '../../types/types';
 
 class News {
     draw(data: Array<ISources>) {

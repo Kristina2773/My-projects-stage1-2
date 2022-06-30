@@ -1,9 +1,21 @@
 export interface IDataNews {
   status: string;
   totalResults: number;
-  articles: ReadonlyArray<ISources>;
+  articles: Array<ISources>;
 }
-
+export interface IData {
+  status: string;
+  sources: Array<IDataSources>;
+}
+export interface IDataSources {
+  category: string;
+  country: string;
+  description: string;
+  id: string;
+  language: string;
+  name: string;
+  url: string;
+}
 export interface ISources {
   source: {
       name: string;

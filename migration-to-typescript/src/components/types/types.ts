@@ -29,3 +29,17 @@ export interface ISources {
   publishedAt: string;
   content: string;
 }
+export interface IPKey {
+  apiKey: string;
+}
+export interface IResult {
+  body: ReadableStream<Uint8Array> | null;
+  bodyUsed: boolean;
+  headers: Headers;
+  ok: boolean;
+  redirected: boolean;
+  status: number;
+  statusText: string;
+  type: string;
+  url: string;
+}

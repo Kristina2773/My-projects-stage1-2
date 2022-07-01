@@ -9,7 +9,7 @@ class Loader {
     }
 
     getResp(
-        { endpoint, options} : {endpoint: string, options: IPKey },
+        { endpoint, options = {}} : {endpoint: string, options?: IPKey | Partial<object>},
         callback = () => {
             console.error('No callback for GET response');
         }

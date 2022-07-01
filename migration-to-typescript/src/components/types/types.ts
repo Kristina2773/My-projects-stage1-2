@@ -30,7 +30,7 @@ export interface ISources {
   content: string;
 }
 export interface IPKey {
-  apiKey: string;
+  apiKey?: string;
 }
 export interface IResult {
   body: ReadableStream<Uint8Array> | null;

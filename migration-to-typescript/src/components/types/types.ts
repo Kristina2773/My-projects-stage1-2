@@ -43,3 +43,7 @@ export interface IResult {
   type: string;
   url: string;
 }
+
+export interface ICallBack <T extends IData | IDataNews>{
+  (data?: T) : T | void;
+}

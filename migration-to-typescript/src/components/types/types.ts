@@ -18,8 +18,8 @@ export interface IDataSources {
 }
 export interface ISources {
   source: {
-      name: string;
-      id: string;
+    name: string;
+    id: string;
   };
   author: string;
   title: string;
@@ -44,6 +44,6 @@ export interface IResult {
   url: string;
 }
 
-export interface ICallBack <T extends IData | IDataNews>{
-  (data?: T) : T | void;
+export interface ICallBack<T extends IData | IDataNews> {
+  (data?: T): T | void;
 }

@@ -1,50 +1,50 @@
-import {IPKey, IData, IResult} from '../types/types';
+import { IPKey, IData } from '../types/types';
 
 class Loader {
-    baseLink: string;
-    options: IPKey;
-    constructor(baseLink : string, options : IPKey) {
-        this.baseLink = baseLink;
-        this.options = options;
+  baseLink: string;
+  options: IPKey;
+  constructor(baseLink: string, options: IPKey) {
+    this.baseLink = baseLink;
+    this.options = options;
+  }
+
+  getResp(
+    { endpoint, options = {} }: { endpoint: string; options?: IPKey | Partial<object> },
+    callback = () => {
+      console.error('No callback for GET response');
+    }
+  ) {
+    this.load('GET', endpoint, callback, options);
+  }
+
+  errorHandler<T extends Response>(res: T): T {
+    if (!res.ok) {
+      if (res.status === 401 || res.status === 404)
+        console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+      throw Error(res.statusText);
     }
 
-    getResp(
-        { endpoint, options = {}} : {endpoint: string, options?: IPKey | Partial<object>},
-        callback = () => {
-            console.error('No callback for GET response');
-        }
-    ) {
-        this.load('GET', endpoint, callback, options);
-    }
+    return res;
+  }
 
-    errorHandler<T extends IResult>(res : T) : T {
-        if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
-                console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
-            throw Error(res.statusText);
-        }
+  makeUrl(options: IPKey, endpoint: string) {
+    const urlOptions = { ...this.options, ...options };
+    let url = `${this.baseLink}${endpoint}?`;
 
-        return res;
-    }
+    Object.keys(urlOptions).forEach((key) => {
+      url += `${key}=${urlOptions[key as keyof typeof urlOptions] as string}&`;
+    });
 
-    makeUrl(options : IPKey, endpoint : string) {
-        const urlOptions = { ...this.options, ...options };
-        let url = `${this.baseLink}${endpoint}?`;
+    return url.slice(0, -1);
+  }
 
-        Object.keys(urlOptions).forEach((key) => {
-            url += `${key}=${urlOptions[key as keyof typeof urlOptions]}&`;
-        });
-
-        return url.slice(0, -1);
-    }
-
-    load(method : string, endpoint : string, callback : (data : IData) => void, options : IPKey) {
-        fetch(this.makeUrl(options, endpoint), { method })
-            .then(this.errorHandler)
-            .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
-    }
+  load(method: string, endpoint: string, callback: (data: IData) => void, options: IPKey) {
+    fetch(this.makeUrl(options, endpoint), { method })
+      .then((...args) => this.errorHandler(...args))
+      .then((res) => res.json())
+      .then((data: IData) => callback(data))
+      .catch((err) => console.error(err));
+  }
 }
 
 export default Loader;

@@ -1,3 +1,7 @@
+.news {
+    width: 40%;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
@@ -119,6 +123,11 @@
 
 .news__item:hover .news__meta-details {
     left: 0%;
+}
+@media screen and (max-width: 768px) {
+    .news {
+      width: 100%;
+  }
 }
 
 @media (min-width: 640px) {

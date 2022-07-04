@@ -7,7 +7,7 @@ export interface IData {
   status: string;
   sources: Array<IDataSources>;
 }
-export interface IDataSources {
+export type IDataSources = {
   category: string;
   country: string;
   description: string;
@@ -15,8 +15,8 @@ export interface IDataSources {
   language: string;
   name: string;
   url: string;
-}
-export interface ISources {
+};
+export type ISources = {
   source: {
     name: string;
     id: string;
@@ -28,7 +28,7 @@ export interface ISources {
   urlToImage: string;
   publishedAt: string;
   content: string;
-}
+};
 export interface IPKey {
   apiKey?: string;
 }

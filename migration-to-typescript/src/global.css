@@ -13,6 +13,12 @@ header h1 {
     font-weight: 800;
 }
 
+main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
 footer {
     height: 100px;
     display: flex;
@@ -33,7 +39,14 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+select {
+  font: 300 1em 'Fira Sans', sans-serif;
+  width: 200%;
+  background-color: #021047;
+  color: #69db7e;
+}
 .footer-link {
+    font-size: 14px;
     text-decoration: none;
     color: #444;
     transition: color 0.5s;
@@ -49,4 +62,28 @@ footer .copyright:before {
 }
 .footer-link:hover, .footer-logo:hover {
     color: #555;
+}
+
+@media screen and (max-width: 1200px) {
+  select {
+    width: 80%;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 320px) {
+    header h1 {
+        font-size: 28px;
+    };
+    .footer-logo {
+      width: 70px;
+      height: 50px;
+    }
 }

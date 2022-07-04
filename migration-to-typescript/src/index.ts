@@ -3,3 +3,12 @@ import './global.css';
 
 const app = new App();
 app.start();
+
+const select = <HTMLSelectElement>document.querySelector('.select');
+const sources = <HTMLDivElement>document.querySelector('.sources');
+
+select.addEventListener('change', () => {
+  sources.innerHTML = '';
+  const app = new App();
+  app.start();
+});

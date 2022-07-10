@@ -1,14 +1,14 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 class App {
-  controller: AppController;
-  view: AppView;
+  public controller: AppController;
+  public view: AppView;
   constructor() {
     this.controller = new AppController();
     this.view = new AppView();
   }
 
-  start() {
+  public start() {
     (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e) =>
       this.controller.getNews(e, (data) => {
         if (data) {

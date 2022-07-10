@@ -2,7 +2,7 @@ import AppLoader from './appLoader';
 import { IDataNews, IData, ICallBack } from '../types/types';
 
 class AppController extends AppLoader {
-  getSources(callback?: ICallBack<IData>) {
+  public getSources(callback?: ICallBack<IData>) {
     super.getResp(
       {
         endpoint: 'sources',
@@ -11,28 +11,30 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews(e: MouseEvent, callback?: ICallBack<IDataNews>) {
-    let target = e.target;
-    const newsContainer = e.currentTarget;
+  public getNews(e: MouseEvent, callback?: ICallBack<IDataNews>) {
+    let target = e.target as HTMLSpanElement;
+    const newsContainer = e.currentTarget as HTMLDivElement;
 
     while (target !== newsContainer) {
-      if ((target as HTMLSpanElement).classList.contains('source__item')) {
-        const sourceId = (target as HTMLSpanElement).getAttribute('data-source-id');
-        if ((newsContainer as HTMLDivElement).getAttribute('data-source') !== sourceId) {
-          (newsContainer as HTMLDivElement).setAttribute('data-source', sourceId as string);
-          super.getResp(
-            {
-              endpoint: 'everything',
-              options: {
-                sources: sourceId,
+      if (target.classList.contains('source__item')) {
+        const sourceId = target.getAttribute('data-source-id');
+        if (newsContainer.getAttribute('data-source') !== sourceId) {
+          newsContainer.setAttribute('data-source', sourceId as string);
+          if (sourceId) {
+            super.getResp(
+              {
+                endpoint: 'everything',
+                options: {
+                  sources: sourceId,
+                },
               },
-            },
-            callback
-          );
+              callback
+            );
+          }
         }
         return;
       }
-      target = (target as HTMLSpanElement).parentNode;
+        target = target.parentNode as HTMLSpanElement;
     }
   }
 }

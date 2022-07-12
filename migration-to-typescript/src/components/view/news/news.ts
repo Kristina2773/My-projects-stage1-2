@@ -2,7 +2,7 @@ import './news.css';
 import { ISources } from '../../types/types';
 
 class News {
-  public draw(data: Array<ISources>) {
+  public draw(data: Array<ISources>): void {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();
@@ -30,7 +30,7 @@ class News {
     });
     const newsElement = document.querySelector('.news') as HTMLDivElement;
     newsElement.innerHTML = '';
-    (document.querySelector('.news') as HTMLDivElement).appendChild(fragment);
+    newsElement.appendChild(fragment);
   }
 }
 

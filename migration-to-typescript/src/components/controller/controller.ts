@@ -1,8 +1,8 @@
 import AppLoader from './appLoader';
-import { IDataNews, IData, ICallBack } from '../types/types';
+import { ICallBack } from '../types/types';
 
 class AppController extends AppLoader {
-  public getSources(callback?: ICallBack<IData>) {
+  public getSources<T>(callback?: ICallBack<T>): void {
     super.getResp(
       {
         endpoint: 'sources',
@@ -11,30 +11,28 @@ class AppController extends AppLoader {
     );
   }
 
-  public getNews(e: MouseEvent, callback?: ICallBack<IDataNews>) {
+  public getNews<T>(e: MouseEvent, callback?: ICallBack<T>): void {
     let target = e.target as HTMLSpanElement;
     const newsContainer = e.currentTarget as HTMLDivElement;
 
     while (target !== newsContainer) {
       if (target.classList.contains('source__item')) {
         const sourceId = target.getAttribute('data-source-id');
-        if (newsContainer.getAttribute('data-source') !== sourceId) {
-          newsContainer.setAttribute('data-source', sourceId as string);
-          if (sourceId) {
-            super.getResp(
-              {
-                endpoint: 'everything',
-                options: {
-                  sources: sourceId,
-                },
+        if (sourceId && newsContainer.getAttribute('data-source') !== sourceId) {
+          newsContainer.setAttribute('data-source', sourceId);
+          super.getResp(
+            {
+              endpoint: 'everything',
+              options: {
+                sources: sourceId,
               },
-              callback
-            );
-          }
+            },
+            callback
+          );
         }
         return;
       }
-        target = target.parentNode as HTMLSpanElement;
+      target = target.parentNode as HTMLSpanElement;
     }
   }
 }

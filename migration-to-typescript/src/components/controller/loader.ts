@@ -1,6 +1,6 @@
-import { IPKey, IData } from '../types/types';
-import { ICallBack } from '../types/types';
-import { Statuses } from '../types/types';
+// import { IPKey } from '../types/types';
+import { ICallBack, IOptions, IPKey } from '../types/types';
+import { Statuses } from '../consts/consts';
 
 class Loader {
   private readonly baseLink: string;
@@ -11,12 +11,14 @@ class Loader {
   }
 
   protected getResp(
-    { endpoint, options = {} }: { endpoint: string; options?: object },
+    { endpoint, options = {} }: { endpoint: string; options?: IOptions },
     callback = (): void => {
       console.error('No callback for GET response');
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    if (options) {
+      this.load('GET', endpoint, callback, options);
+    }
   }
 
   protected errorHandler<T extends Response>(res: T): T {
@@ -31,7 +33,7 @@ class Loader {
     return res;
   }
 
-  protected makeUrl(options: IPKey, endpoint: string) {
+  protected makeUrl(options: IOptions, endpoint: string): string {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -42,11 +44,11 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  protected load(method: string, endpoint: string, callback: (data: ICallBack<IData>) => void, options: IPKey) {
+  protected load<T>(method: string, endpoint: string, callback: ICallBack<T>, options: IOptions): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then((...args) => this.errorHandler(...args))
       .then((res) => res.json())
-      .then((data) => callback(data))
+      .then((data: T) => callback(data))
       .catch((err) => console.error(err));
   }
 }

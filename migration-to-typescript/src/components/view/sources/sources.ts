@@ -2,11 +2,10 @@ import './sources.css';
 import { IDataSources } from '../../types/types';
 
 class Sources {
-  public draw(data: Array<IDataSources>) {
+  public draw(data: Array<IDataSources>): void {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
     const select = <HTMLSelectElement>document.querySelector('.select');
-
     data.forEach((item: IDataSources) => {
       const sourceClone = sourceItemTemp.content.cloneNode(true) as ParentNode;
       if (item.category === select.value) {

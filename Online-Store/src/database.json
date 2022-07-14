@@ -1,0 +1,302 @@
+[
+  {
+    "title": "Dress for any occasion",
+    "img": "./assets/img/dress-black.jpg",
+    "quantity": 12,
+    "releaseYear": 2018,
+    "Manufacturer": "Goddess",
+    "size": "46",
+    "color": "black",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Sexy Black dress",
+    "img": "./assets/img/dress-black2.jpg",
+    "quantity": 4,
+    "releaseYear": 2022,
+    "Manufacturer": "Roxy",
+    "size": "42",
+    "color": "black",
+    "isPopular": "no"
+  },
+  {
+    "title": "Goddess dress",
+    "img": "./assets/img/dress-black3.jpg",
+    "quantity": 25,
+    "releaseYear": 2019,
+    "Manufacturer": "Goddess",
+    "size": "44",
+    "color": "black",
+    "isPopular": "no"
+  },
+  {
+    "title": "Stylish dress",
+    "img": "./assets/img/dress-black4.jpg",
+    "quantity": 10,
+    "releaseYear": 2022,
+    "Manufacturer": "Goddess",
+    "size": "48",
+    "color": "black",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Fashionable dress",
+    "img": "./assets/img/dress-black5.jpg",
+    "quantity": 3,
+    "releaseYear": 2021,
+    "Manufacturer": "Fairy",
+    "size": "44",
+    "color": "black",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Glamorous dress",
+    "img": "./assets/img/dress-black6.jpg",
+    "quantity": 7,
+    "releaseYear": 2015,
+    "Manufacturer": "Goddess",
+    "size": "42",
+    "color": "black",
+    "isPopular": "no"
+  },
+  {
+    "title": "Stunning dress",
+    "img": "./assets/img/dress-black7.jpg",
+    "quantity": 5,
+    "releaseYear": 2022,
+    "Manufacturer": "Goddess",
+    "size": "48",
+    "color": "black",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Festive dress",
+    "img": "./assets/img/dress-black8.jpg",
+    "quantity": 21,
+    "releaseYear": 2020,
+    "Manufacturer": "Roxy",
+    "size": "46",
+    "color": "black",
+    "isPopular": "no"
+  },
+  {
+    "title": "Wonderful dress",
+    "img": "./assets/img/dress-blue.jpg",
+    "quantity": 22,
+    "releaseYear": 2020,
+    "Manufacturer": "Fairy",
+    "size": "44",
+    "color": "blue",
+    "isPopular": "no"
+  },
+  {
+    "title": "Evening dress",
+    "img": "./assets/img/dress-blue2.jpg",
+    "quantity": 3,
+    "releaseYear": 2019,
+    "Manufacturer": "Fairy",
+    "size": "42",
+    "color": "blue",
+    "isPopular": "no"
+  },
+  {
+    "title": "Summer dress",
+    "img": "./assets/img/dress-blue3.jpg",
+    "quantity": 1,
+    "releaseYear": 2021,
+    "Manufacturer": "Calzedonia",
+    "size": "42",
+    "color": "blue",
+    "isPopular": "no"
+  },
+  {
+    "title": "Summer blue dress",
+    "img": "./assets/img/dress-blue4.jpg",
+    "quantity": 16,
+    "releaseYear": 2022,
+    "Manufacturer": "Calzedonia",
+    "size": "44",
+    "color": "blue",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Beautiful dress",
+    "img": "./assets/img/dress-blue5.jpg",
+    "quantity": 20,
+    "releaseYear": 2022,
+    "Manufacturer": "Ruxara",
+    "size": "48",
+    "color": "blue",
+    "isPopular": "no"
+  },
+  {
+    "title": "Best dress",
+    "img": "./assets/img/dress-gold-4.jpg",
+    "quantity": 14,
+    "releaseYear": 2020,
+    "Manufacturer": "Calzedonia",
+    "size": "48",
+    "color": "gold",
+    "isPopular": "no"
+  },
+  {
+    "title": "Gold dress",
+    "img": "./assets/img/dress-gold.jpg",
+    "quantity": 2,
+    "releaseYear": 2018,
+    "Manufacturer": "Ruxara",
+    "size": "46",
+    "color": "gold",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Shining dress",
+    "img": "./assets/img/dress-gold2.jpg",
+    "quantity": 5,
+    "releaseYear": 2019,
+    "Manufacturer": "Calzedonia",
+    "size": "46",
+    "color": "gold",
+    "isPopular": "no"
+  },
+  {
+    "title": "Fashionable gold dress",
+    "img": "./assets/img/dress-gold3.jpg",
+    "quantity": 8,
+    "releaseYear": 2017,
+    "Manufacturer": "Roxy",
+    "size": "46",
+    "color": "gold",
+    "isPopular": "no"
+  },
+  {
+    "title": "Magical dress",
+    "img": "./assets/img/dress-pink.jpg",
+    "quantity": 9,
+    "releaseYear": 2021,
+    "Manufacturer": "Fairy",
+    "size": "44",
+    "color": "pink",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Red dress for any occasion",
+    "img": "./assets/img/dress-red.jpg",
+    "quantity": 1,
+    "releaseYear": 2020,
+    "Manufacturer": "Roxy",
+    "size": "44",
+    "color": "red",
+    "isPopular": "no"
+  },
+  {
+    "title": "Versatile dress",
+    "img": "./assets/img/dress-red2.jpg",
+    "quantity": 13,
+    "releaseYear": 2021,
+    "Manufacturer": "Roxy",
+    "size": "42",
+    "color": "red",
+    "isPopular": "no"
+  },
+  {
+    "title": "Long dress",
+    "img": "./assets/img/dress-red3.jpg",
+    "quantity": 28,
+    "releaseYear": 2020,
+    "Manufacturer": "Ruxara",
+    "size": "42",
+    "color": "red",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Dress for you",
+    "img": "./assets/img/dress-red4.jpg",
+    "quantity": 11,
+    "releaseYear": 2021,
+    "Manufacturer": "Roxy",
+    "size": "46",
+    "color": "red",
+    "isPopular": "no"
+  },
+  {
+    "title": "Airy dress",
+    "img": "./assets/img/dress-rose-5.jpg",
+    "quantity": 10,
+    "releaseYear": 2019,
+    "Manufacturer": "Ruxara",
+    "size": "44",
+    "color": "pink",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Beautiful rose dress",
+    "img": "./assets/img/dress-rose.jpg",
+    "quantity": 17,
+    "releaseYear": 2017,
+    "Manufacturer": "Calzedonia",
+    "size": "42",
+    "color": "pink",
+    "isPopular": "no"
+  },
+  {
+    "title": "Fairy dress",
+    "img": "./assets/img/dress-rose2.jpg",
+    "quantity": 4,
+    "releaseYear": 2016,
+    "Manufacturer": "Calzedonia",
+    "size": "44",
+    "color": "pink",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Lace fairy dress",
+    "img": "./assets/img/dress-rose3.jpg",
+    "quantity": 8,
+    "releaseYear": 2019,
+    "Manufacturer": "Fairy",
+    "size": "48",
+    "color": "pink",
+    "isPopular": "no"
+  },
+  {
+    "title": "Pink dress",
+    "img": "./assets/img/dress-rose4.jpg",
+    "quantity": 9,
+    "releaseYear": 2022,
+    "Manufacturer": "Fairy",
+    "size": "42",
+    "color": "pink",
+    "isPopular": "yes"
+  },
+  {
+    "title": "Wedding white dress",
+    "img": "./assets/img/dress-white.jpg",
+    "quantity": 3,
+    "releaseYear": 2020,
+    "Manufacturer": "Fairy",
+    "size": "46",
+    "color": "white",
+    "isPopular": "no"
+  },
+  {
+    "title": "White summer dress",
+    "img": "./assets/img/dress-white2.jpg",
+    "quantity": 5,
+    "releaseYear": 2021,
+    "Manufacturer": "Calzedonia",
+    "size": "44",
+    "color": "white",
+    "isPopular": "no"
+  },
+  {
+    "title": "White dress mini",
+    "img": "./assets/img/dress-white3.jpg",
+    "quantity": 16,
+    "releaseYear": 2022,
+    "Manufacturer": "Fairy",
+    "size": "42",
+    "color": "white",
+    "isPopular": "yes"
+  }
+]

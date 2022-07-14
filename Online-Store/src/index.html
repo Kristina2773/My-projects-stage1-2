@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Online store</title>
+    </head>
+    <body class="body">
+        <header class="header container">
+            <img src="./assets/img/logo.jpg" class="header_logo" width="100px" height="70px">
+            <h1 class="header_title">DreamDress</h1>
+            <div class="header_img-basket"></div>
+            <div class="header__basket-container">
+              <img src="./assets/img/basket.png" class="header_img-basket" width="80px" height="70px">
+            </div>
+        </header>
+        <main class="main">
+          <div class="first-section-container">
+            <section class="search-and-sorting">
+              <div class="sort-container">
+                <select name = "search-and-sorting" class="search-and-sorting__sort-category">
+                  <option class="search-and-sorting__option sort_a-z" value="By name, from A to Z">By name, from A to Z</option>
+                  <option class="search-and-sorting__option sort_z-a" value="By name, from Z to A">By name, from Z to A</option>
+                  <option class="search-and-sorting__option sort-year_ascending" value="By year, ascending">By year, ascending</option>
+                  <option class="search-and-sorting__option sort-year_descending" value="By year, descending">By year, descending</option>
+                </select>
+                <div class="sorting_popular">
+                  <input type="checkbox" class="filter-value__btn_popular" id="btn_popular" value="Only popular">
+                  <label for="btn_popular">Only popular</label>
+                </div>
+              </div>
+              <div class="search-field-container">
+                <input type="text" class="search-and-sorting__input-field_search" placeholder="What are you looking for?" autocomplete="off" autofocus>
+                <button type="submit" class="search-and-sorting__input-field_submit"></button>
+                <div class="search-and-sorting__close-icon none"></div>
+              </div>
+            </section>
+            <section class="cards">
+            </section>
+          </div>
+          <section class="second-section-container">
+            <div class="filter-value">
+              <h3 class="filter-value__title-brand">Choose your favorite brand:</h3>
+              <div name = "filter-value__brand">
+                <button name="text" value="goddess">Goddess</button>
+                <button name="text" value="fairy">Fairy</button>
+                <button name="text" value="calzedonia">Calzedonia</button>
+                <button name="text" value="roxy">Roxy</button>
+                <button name="text" value="ruxara">Ruxara</button>
+              </div>
+              <h3 class="filter-value__title-size">Choose the right size:</h3>
+              <div class = "filter-value__size">
+                <button name="text" class="filter-value__btn_size">42</button>
+                <button name="text" class="filter-value__btn_size">44</button>
+                <button name="text" class="filter-value__btn_size">46</button>
+                <button name="text" class="filter-value__btn_size">48</button>
+                <button name="text" class="filter-value__btn_size">50</button>
+              </div>
+              <h3 class="filter-value__title-size">Choose the color:</h3>
+              <div class = "filter-value__colors">
+                <button class="filter-value__btn_color">white</button>
+                <button class="filter-value__btn_color">red</button>
+                <button class="filter-value__btn_color">black</button>
+                <button class="filter-value__btn_color">gold</button>
+                <button class="filter-value__btn_color">blue</button>
+                <button class="filter-value__btn_color">pink</button>
+              </div>
+            </div>
+              <div class="filter-range">
+
+              </div>
+              <div class="reset-btns">
+                <button class="reset-btn_filter">Reset filters</button>
+                <button class="reset-btn_settings">Reset settings</button>
+              </div>
+          </section>
+        </main>
+        <footer class="footer container">
+            <a href="https://github.com/Kristina2773" class="footer-link" target="_blank">
+                Kristina2773
+            </a>
+            <p class="footer-year">
+                2022
+            </p>
+            <a href="https://rs.school/js/" target="_blank" class="footer-logo"></a>
+        </footer>
+    </body>
+</html>

@@ -3,7 +3,15 @@ export interface IData {
   img: string;
   quantity: number;
   releaseYear: number;
-  Manufacturer: string;
+  brand: string;
   size: string;
   color: string;
+}
+
+export interface IFilter {
+  filterBySize?: Array<string>;
+  filterByColor?: Array<string>;
+  filterByBrand?: Array<string>;
+  filterByYear?: Array<string>;
+  filterByQuantity?: Array<string>;
 }

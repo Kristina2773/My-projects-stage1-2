@@ -4,4 +4,5 @@ export const filter: object = {
   filterByColor: [],
   filterByQuantity: [],
   filterByYear: [],
+  isPopular: [],
 };

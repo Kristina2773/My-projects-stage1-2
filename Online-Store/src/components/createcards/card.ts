@@ -17,6 +17,7 @@ export function createCard(data: Array<IData>): void {
       <p>Manufacturer: ${item.brand}</p>
       <p>Size: ${item.size}</p>
       <p>Color: ${item.color}</p>
+      <p>Popular: ${item.isPopular}</p>
     </div>
     `;
     cards.append(cardContainer);

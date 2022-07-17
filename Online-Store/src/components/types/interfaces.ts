@@ -6,6 +6,7 @@ export interface IData {
   brand: string;
   size: string;
   color: string;
+  isPopular: string;
 }
 
 export interface IFilter {
@@ -14,4 +15,5 @@ export interface IFilter {
   filterByBrand?: Array<string>;
   filterByYear?: Array<string>;
   filterByQuantity?: Array<string>;
+  isPopular?: Array<string>;
 }

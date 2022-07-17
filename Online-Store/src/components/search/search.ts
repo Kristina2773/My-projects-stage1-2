@@ -1,9 +1,8 @@
-import data from '../../database.json';
 import { IData } from '../types/interfaces';
 import { createCard } from '../createcards/card';
 import { setLocalStorage } from '../localStorage/setLocalStorage';
 
-function searchItem(data: Array<IData>): void {
+export function searchItem(data: Array<IData>): void {
   const cards = document.querySelector('.cards') as HTMLDivElement;
   let arrayCardForSearch: Array<IData> = [];
   const searchField = document.querySelector('.search-and-sorting__input-field_search') as HTMLInputElement;
@@ -55,14 +54,5 @@ function searchItem(data: Array<IData>): void {
       cards.innerHTML = '';
       createCard(data);
     });
-  }
-}
-
-export function searchWithDataStorage() {
-  const dataBuild = JSON.parse(localStorage.getItem('Data') as string) as Array<IData>;
-  if (dataBuild && dataBuild.length !== 0) {
-    searchItem(dataBuild);
-  } else {
-    searchItem(data);
   }
 }

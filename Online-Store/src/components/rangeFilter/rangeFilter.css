@@ -1,0 +1,83 @@
+.filter-range__quantity-stock, .filter-range__release {
+  position: relative;
+  width: 90%;
+  background-color: inherit;
+}
+.filter-range-year, .filter-range__filter-stock {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #000000;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+.slider-track-year, .slider-track-stock {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: #dadae5;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #000000;
+  cursor: pointer;
+  margin-top: -6px;
+  pointer-events: auto;
+  border-radius: 50%;
+}
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #000000;
+  pointer-events: auto;
+}
+input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #000000;
+  pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+}
+.filter-range__quantity-value,
+.filter-range__value-years {
+  display: flex;
+  justify-content: space-between;
+}

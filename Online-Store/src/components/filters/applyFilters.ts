@@ -22,12 +22,23 @@ import {
 } from '../consts/btns';
 
 export function applyFilters() {
-  const filterOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
+  const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
   const dataBuild = JSON.parse(localStorage.getItem('Data') as string) as IData;
-  if (!filterOptions) {
+  const popular = document.querySelector<HTMLInputElement>('.filter-value__btn_popular');
+  if (!filtersOptions) {
     const filt = filter as IFilter;
     setLocalStorage('filters', filt);
     changeFilter();
+  } else {
+    const isPopular = filtersOptions.isPopular;
+    if (isPopular) {
+      if (popular) {
+        if (isPopular.length > 0) {
+          popular.checked = true;
+          changeFilter();
+        }
+      }
+    }
   }
   if (!dataBuild) {
     const dat: IData[] = [];
@@ -62,6 +73,23 @@ export function applyFilters() {
         const filterColor = filtersOptions.filterByColor as string[];
         addFilters(dataSetColor, filtersOptions, filterColor);
       });
+    });
+  }
+  if (popular) {
+    popular.addEventListener('change', (): void => {
+      const data: boolean = popular.checked ? true : false;
+      const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
+      if (filtersOptions.isPopular) {
+        if (!data) {
+          filtersOptions.isPopular = [];
+          setLocalStorage('filters', filtersOptions);
+          changeFilter();
+        } else {
+          filtersOptions.isPopular = ['yes'];
+          setLocalStorage('filters', filtersOptions);
+          changeFilter();
+        }
+      }
     });
   }
 }

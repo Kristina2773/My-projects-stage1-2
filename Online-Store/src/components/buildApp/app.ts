@@ -1,9 +1,10 @@
 import { createCard } from '../createcards/card';
-import data from '../../database.json';
-import { sortWithDataStorage, sortDefault } from '../sorting/sort';
-import { searchWithDataStorage } from '../search/search';
+import { sortWithDataStorage } from '../sorting/sortWithDataStorage';
+import { sortDefault } from '../sorting/sortDefault';
+import { searchWithDataStorage } from '../search/searchWithDataStorage';
 import { applyFilters } from '../filters/applyFilters';
 import { IData } from '../types/interfaces';
+import { slider } from '../rangeFilter/sliders';
 
 class App {
   public start(): void {
@@ -16,6 +17,7 @@ class App {
       sortDefault();
     }
     applyFilters();
+    slider();
     sortList.addEventListener('click', () => {
       sortWithDataStorage();
     });

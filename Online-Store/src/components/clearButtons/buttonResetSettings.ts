@@ -7,6 +7,7 @@ export function clearLocalStorage() {
   const searchBtn = document.querySelector('.search-and-sorting__input-field_submit') as HTMLButtonElement;
   const closeSearchIcon = document.querySelector('.search-and-sorting__close-icon') as HTMLDivElement;
   const popularBtn = document.querySelector<HTMLInputElement>('.filter-value__btn_popular');
+  const count = document.querySelector<HTMLDivElement>('.header__basket-count');
   if (sortList) {
     sortList.value = 'By name, from A to Z';
   }
@@ -18,6 +19,10 @@ export function clearLocalStorage() {
   if (popularBtn) {
     popularBtn.checked = false;
   }
+  if (count) {
+    count.textContent = String(0);
+  }
   setLocalStorage('method', 'By name, from A to Z');
+  setLocalStorage('inBasket', []);
   resetFilters();
 }

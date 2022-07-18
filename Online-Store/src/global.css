@@ -14,7 +14,39 @@
         align-items: center;
     }
     .header__basket-container {
+        width: 90px;
+        height: 90px;
+    }
+    .header__basket-count {
+        position: relative;
+        bottom: calc(100% - 35%);
+        left: calc(100% - 50%);
         display: flex;
+        width: 20px;
+        height: 20px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: rgb(204, 203, 203);
+    }
+    .header__img-basket {
+        width: 90px;
+        height: 90px;
+        background: url('./assets/img/basket.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+    }
+    .in-basket::after {
+        content: '';
+        position: relative;
+        right: 90px;
+        width: 0;
+        height: 0;
+        border-width: 25px 15px 10px;
+        border-style: solid;
+        border-color: rgb(11, 9, 88) rgb(11, 9, 88) transparent;
+        transform: rotate(180deg);
     }
     .main {
         display: flex;

@@ -1,6 +1,6 @@
 import { setLocalStorage } from '../localStorage/setLocalStorage';
 import { IFilter } from '../types/interfaces';
-import { changeFilter } from '../filters/changeFilter';
+import { changeFilter } from '../filtersValue/changeFilter';
 
 export function rangeSliderStock(
   SlideOne: string,

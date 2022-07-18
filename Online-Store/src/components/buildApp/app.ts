@@ -2,10 +2,11 @@
 import { sortWithDataStorage } from '../sorting/sortWithDataStorage';
 import { sortDefault } from '../sorting/sortDefault';
 import { searchWithDataStorage } from '../search/searchWithDataStorage';
-import { applyFilters } from '../filters/applyFilters';
+import { applyFilters } from '../filtersValue/applyFilters';
 import { slider } from '../rangeFilter/sliders';
 import { resetFilters } from '../clearButtons/buttonResetFilters';
 import { clearLocalStorage } from '../clearButtons/buttonResetSettings';
+import { activeBtns } from '../activeBunttons/activeBtns';
 
 class App {
   public start(): void {
@@ -15,6 +16,7 @@ class App {
     const btnSettings = document.querySelectorAll('.reset-btn_settings');
     sortDefault();
     applyFilters();
+    activeBtns();
     slider();
     sortList.addEventListener('change', () => {
       sortWithDataStorage();

@@ -15,3 +15,4 @@ export const colorRedBtn = document.querySelector<HTMLButtonElement>('.color-red
 export const colorBlackBtn = document.querySelector<HTMLButtonElement>('.color-black');
 export const colorGoldBtn = document.querySelector<HTMLButtonElement>('.color-gold');
 export const colorPinkBtn = document.querySelector<HTMLButtonElement>('.color-pink');
+export const colorBlueBtn = document.querySelector<HTMLButtonElement>('.color-blue');

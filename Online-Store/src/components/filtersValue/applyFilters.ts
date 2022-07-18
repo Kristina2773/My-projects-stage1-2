@@ -19,6 +19,7 @@ import {
   colorPinkBtn,
   colorRedBtn,
   colorWhiteBtn,
+  colorBlueBtn,
 } from '../consts/btns';
 
 export function applyFilters() {
@@ -51,6 +52,7 @@ export function applyFilters() {
         const dataSetBrand = elem.dataset.brand as string;
         const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
         const filterBrand = filtersOptions.filterByBrand as string[];
+        elem.classList.toggle('active-brand-btn');
         addFilters(dataSetBrand, filtersOptions, filterBrand);
       });
     });
@@ -61,16 +63,18 @@ export function applyFilters() {
         const dataSetSize = elem.dataset.size as string;
         const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
         const filterSize = filtersOptions.filterBySize as string[];
+        elem.classList.toggle('active-size-btn');
         addFilters(dataSetSize, filtersOptions, filterSize);
       });
     });
   }
-  if (colorBlackBtn && colorGoldBtn && colorPinkBtn && colorRedBtn && colorWhiteBtn) {
-    [colorBlackBtn, colorGoldBtn, colorPinkBtn, colorRedBtn, colorWhiteBtn].forEach((elem): void => {
+  if (colorBlackBtn && colorGoldBtn && colorPinkBtn && colorRedBtn && colorWhiteBtn && colorBlueBtn) {
+    [colorBlackBtn, colorGoldBtn, colorPinkBtn, colorRedBtn, colorWhiteBtn, colorBlueBtn].forEach((elem): void => {
       elem.addEventListener('click', (): void => {
         const dataSetColor = elem.dataset.color as string;
         const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
         const filterColor = filtersOptions.filterByColor as string[];
+        elem.classList.toggle('color-btn-active');
         addFilters(dataSetColor, filtersOptions, filterColor);
       });
     });

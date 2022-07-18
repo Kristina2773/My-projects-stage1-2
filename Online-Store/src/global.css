@@ -53,59 +53,11 @@
         display: flex;
         gap: 20px;
     }
-    .filter-value__btn_size {
-        cursor: pointer;
-        border: none;
-        background: inherit;
-        font-size: 2rem;
-    }
-    .filter-value__brand {
-        width: 80px;
-        height: 30px;
-        cursor: pointer;
-        border: 1px solid rgb(11, 9, 88);
-        background: inherit;
-    }
-    .filter-value__brand:hover {
-        background: rgb(84, 81, 119);
-        border: 3px solid rgb(11, 9, 88);
-    }
-    .filter-value__btn_size:hover {
-        color: rgb(84, 81, 119);
-    }
-
-    .filter-value {
-        margin-left: 15px;
-        height: 400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .reset-btns {
-        margin-top: 8%;
-        display: flex;
-        justify-content: space-around;
-    }
-    .reset-btn {
-        cursor: pointer;
-    }
-    .reset-btn:hover {
-        background: rgb(84, 81, 119);
-    }
-    .reset-btn_filter,
-    .reset-btn_settings {
-        width: 180px;
-        height: 40px;
-        border: 3px solid rgb(4, 0, 255);
-        border-radius: 20px;
-    }
-    .reset-btns-768 {
-        display: none;
-    }
 
     .message {
-        width: 350px;
+        width: 500px;
         height: 100px;
+        text-align: center;
         color: black;
         font-size: 30px;
     }
@@ -148,8 +100,5 @@
         width: 100%;
         gap: 5px;
         border: none;
-    }
-    .reset-btns {
-        display: none;
     }
 }

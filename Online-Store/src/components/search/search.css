@@ -1,37 +1,66 @@
-.search-field-container {
-  width: 254px;
-  height: 40px;
-  border: 1px solid rgb(11, 9, 88);
+@media screen and (max-width: 1920px) {
+  .search-field-container {
+    width: 254px;
+    height: 40px;
+    border: 1px solid rgb(11, 9, 88);
+  }
+  .search-and-sorting__input-field_search {
+    width: 250px;
+    height: 40px;
+    border: none;
+    background: inherit;
+    cursor: text;
+  }
+  .search-and-sorting__input-field_submit {
+    position: relative;
+    bottom: calc(100% - 2%);
+    left: calc(100% - 20%);
+    width: 40px; 
+    height: 40px; 
+    border: none;  
+    background: url('../../assets/img/icon-search.png') no-repeat 50% 50%;
+    background-size: 100%;
+  }
+  .search-and-sorting__input-field_submit:hover,
+  .search-and-sorting__close-icon:hover {
+    cursor: pointer;
+  }
+  .search-and-sorting__close-icon {
+    position: relative;
+    bottom: calc(100% - 1%);
+    left: calc(100% - 20%);
+    width: 35px; 
+    height: 35px; 
+    border: none;  
+    background: url('../../assets/img/close-btn.png') no-repeat 50% 50%;
+    background-size: 100%;
+  }
 }
-.search-and-sorting__input-field_search {
-  /* position: relative; */
-  width: 250px;
-  height: 40px;
-  border: none;
-  background: inherit;
-  cursor: text;
-}
-.search-and-sorting__input-field_submit {
-  position: relative;
-  bottom: calc(100% - 2%);
-  left: calc(100% - 20%);
-  width: 40px; 
-  height: 40px; 
-  border: none;  
-  background: url('../../assets/img/icon-search.png') no-repeat 50% 50%;
-  background-size: 100%;
-}
-.search-and-sorting__input-field_submit:hover,
-.search-and-sorting__close-icon:hover {
-  cursor: pointer;
-}
-.search-and-sorting__close-icon {
-  position: relative;
-  bottom: calc(100% - 1%);
-  left: calc(100% - 20%);
-  width: 35px; 
-  height: 35px; 
-  border: none;  
-  background: url('../../assets/img/close-btn.png') no-repeat 50% 50%;
-  background-size: 100%;
+@media screen and (max-width: 768px) {
+  .search-and-sorting {
+      width: 100%;
+      flex-direction: column;
+      gap: 20px;
+      border-bottom: 1px solid rgb(11, 9, 88);
+      padding-bottom: 50px;
+  }
+  .search-field-container {
+      order: -1;
+      width: 730px;
+  }
+  .search-and-sorting__input-field_search {
+      width: 730px;
+  }
+  .reset-btns-768 {
+      display: block;
+      display: flex; 
+      gap: 100px;
+  }
+  .search-and-sorting__input-field_submit {
+    left: calc(100% - 7%);
+  }
+  .search-and-sorting__sort-category {
+    width: 300px;
+    height: 20px;
+  }
 }

@@ -70,8 +70,10 @@ export function selectCard() {
     copyData = array;
     array = [];
   }
+  if (copyData.length !== 0) {
+    copyData;
+  }
 
-  copyData = copyData.length == 0 ? data : copyData;
   const dataBase = [...new Set(copyData)];
   setLocalStorage('Data', dataBase);
 }

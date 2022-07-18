@@ -1,16 +1,21 @@
 import data from '../../database.json';
 import { setLocalStorage } from '../localStorage/setLocalStorage';
-import { createCard } from '../createcards/card';
+import { sort } from './sort';
 
 export function sortDefault() {
   const copyData = data;
-  copyData.forEach((item) => {
-    if (Number(item.title.codePointAt(0)) < 65 || Number(item.title.codePointAt(0)) > 90) {
-      item.title = item.title[0].toUpperCase() + item.title.slice(1, item.title.length);
-    }
-  });
-  setLocalStorage('Data', copyData);
-  const copyDefault = copyData;
-  copyDefault.sort((a, b) => Number(a.title.codePointAt(0)) - Number(b.title.codePointAt(0)));
-  createCard(copyDefault);
+  const sortList = document.querySelector<HTMLInputElement>('.search-and-sorting__sort-category');
+  const sortMethod = JSON.parse(localStorage.getItem('method') as string) as string;
+  if (!sortMethod && sortList) {
+    setLocalStorage('method', sortList.value);
+    sort(copyData);
+  }
+  if (sortList && sortMethod) {
+    const method = JSON.parse(localStorage.getItem('method') as string) as string;
+    sortList.value = method;
+    sort(copyData);
+    sortList.addEventListener('change', () => {
+      sort(copyData);
+    });
+  }
 }

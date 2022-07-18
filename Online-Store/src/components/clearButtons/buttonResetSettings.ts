@@ -1,0 +1,23 @@
+import { resetFilters } from './buttonResetFilters';
+import { setLocalStorage } from '../localStorage/setLocalStorage';
+
+export function clearLocalStorage() {
+  const sortList = document.querySelector<HTMLSelectElement>('.search-and-sorting__sort-category');
+  const searchField = document.querySelector('.search-and-sorting__input-field_search') as HTMLInputElement;
+  const searchBtn = document.querySelector('.search-and-sorting__input-field_submit') as HTMLButtonElement;
+  const closeSearchIcon = document.querySelector('.search-and-sorting__close-icon') as HTMLDivElement;
+  const popularBtn = document.querySelector<HTMLInputElement>('.filter-value__btn_popular');
+  if (sortList) {
+    sortList.value = 'By name, from A to Z';
+  }
+  if (searchField) {
+    searchField.value = '';
+    closeSearchIcon.classList.add('none');
+    searchBtn.classList.remove('none');
+  }
+  if (popularBtn) {
+    popularBtn.checked = false;
+  }
+  setLocalStorage('method', 'By name, from A to Z');
+  resetFilters();
+}

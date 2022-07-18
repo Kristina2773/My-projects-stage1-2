@@ -10,28 +10,31 @@ export function sort(data: Array<IData>) {
       item.title = item.title[0].toUpperCase() + item.title.slice(1, item.title.length);
     }
   });
-  sortList.addEventListener('change', () => {
-    switch (sortList.value) {
-      case 'By name, from A to Z':
-        copyData.sort((a, b) => Number(a.title.codePointAt(0)) - Number(b.title.codePointAt(0)));
-        createCard(copyData);
-        setLocalStorage('Data', copyData);
-        break;
-      case 'By name, from Z to A':
-        copyData.sort((a, b) => Number(b.title.codePointAt(0)) - Number(a.title.codePointAt(0)));
-        createCard(copyData);
-        setLocalStorage('Data', copyData);
-        break;
-      case 'By year, ascending':
-        copyData.sort((a, b) => a.releaseYear - b.releaseYear);
-        createCard(copyData);
-        setLocalStorage('Data', copyData);
-        break;
-      case 'By year, descending':
-        copyData.sort((a, b) => b.releaseYear - a.releaseYear);
-        createCard(copyData);
-        setLocalStorage('Data', copyData);
-        break;
-    }
-  });
+  const method = sortList.value;
+  switch (method) {
+    case 'By name, from A to Z':
+      copyData.sort((a, b) => Number(a.title.codePointAt(0)) - Number(b.title.codePointAt(0)));
+      createCard(copyData);
+      setLocalStorage('method', sortList.value);
+      setLocalStorage('Data', copyData);
+      break;
+    case 'By name, from Z to A':
+      copyData.sort((a, b) => Number(b.title.codePointAt(0)) - Number(a.title.codePointAt(0)));
+      createCard(copyData);
+      setLocalStorage('method', sortList.value);
+      setLocalStorage('Data', copyData);
+      break;
+    case 'By year, ascending':
+      copyData.sort((a, b) => a.releaseYear - b.releaseYear);
+      createCard(copyData);
+      setLocalStorage('method', sortList.value);
+      setLocalStorage('Data', copyData);
+      break;
+    case 'By year, descending':
+      copyData.sort((a, b) => b.releaseYear - a.releaseYear);
+      createCard(copyData);
+      setLocalStorage('method', sortList.value);
+      setLocalStorage('Data', copyData);
+      break;
+  }
 }

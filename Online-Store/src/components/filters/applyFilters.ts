@@ -24,7 +24,7 @@ import {
 export function applyFilters() {
   const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
   const dataBuild = JSON.parse(localStorage.getItem('Data') as string) as IData;
-  const popular = document.querySelector<HTMLInputElement>('.filter-value__btn_popular');
+  const popularBtn = document.querySelector<HTMLInputElement>('.filter-value__btn_popular');
   if (!filtersOptions) {
     const filt = filter as IFilter;
     setLocalStorage('filters', filt);
@@ -32,9 +32,9 @@ export function applyFilters() {
   } else {
     const isPopular = filtersOptions.isPopular;
     if (isPopular) {
-      if (popular) {
+      if (popularBtn) {
         if (isPopular.length > 0) {
-          popular.checked = true;
+          popularBtn.checked = true;
           changeFilter();
         }
       }
@@ -75,9 +75,9 @@ export function applyFilters() {
       });
     });
   }
-  if (popular) {
-    popular.addEventListener('change', (): void => {
-      const data: boolean = popular.checked ? true : false;
+  if (popularBtn) {
+    popularBtn.addEventListener('change', (): void => {
+      const data: boolean = popularBtn.checked ? true : false;
       const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
       if (filtersOptions.isPopular) {
         if (!data) {

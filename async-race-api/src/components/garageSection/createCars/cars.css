@@ -1,0 +1,37 @@
+.car {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px dotted white;
+}
+.select-remove-btn-item {
+  margin-bottom: 1%;
+  display: flex;
+  gap: 15px;
+}
+.active {
+  border: 3px solid rgb(239, 243, 26);
+  background: rgb(239, 243, 26);
+}
+.car-svg {
+  width: 80px;
+  height: 60px;
+  transform: translate(20%, 33%);
+}
+.flag {
+  width: 50px;
+  height: 80px;
+  transform: translate(75vw, 30%);
+}
+
+@media screen and (max-width: 600px) {
+  .flag {
+    width: 40px;
+    height: 60px;
+    transform: translate(50vw, 30%);
+  }
+  .car-svg {
+    width: 70px;
+    height: 50px;
+    transform: translate(20%, 33%);
+  }
+}

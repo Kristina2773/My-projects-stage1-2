@@ -1,0 +1,22 @@
+.body {
+  background-color: #2F4F4F;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+}
+
+.select-btn-section{
+  margin: 1.5%;
+  width: 100%;
+}
+.select-settings-section {
+  width: 100%;
+}
+@media screen and (max-width: 600px) {
+  .body {
+    overflow-x: hidden;
+  }
+}

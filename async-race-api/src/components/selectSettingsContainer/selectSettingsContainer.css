@@ -1,0 +1,42 @@
+.input-create-item,
+.input-update-item {
+  width: 150px;
+  height: 20px;
+
+}
+.create-item-btn,
+.update-item-btn,
+.reset-btn,
+.start-race-btn,
+.generate-btn {
+  height: 30px;
+  border: 2px solid rgb(239, 243, 26);
+  border-radius: 10%;
+  background: rgb(239, 243, 26);
+  color: green;
+}
+.create-item-btn,
+.update-item-btn {
+  width: 100px;
+}
+.generate-btn {
+  width: 130px;
+}
+.reset-btn,
+.start-race-btn {
+  width: 90px;
+}
+.create-item-container,
+.update-item-container {
+  display: flex;
+  gap: 10px;
+}
+.select-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.select-settings-btn-container {
+  display: flex;
+  gap: 10px;
+}

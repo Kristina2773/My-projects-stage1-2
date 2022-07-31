@@ -1,0 +1,12 @@
+.page-btns-container {
+  display: flex;
+  gap: 10px;
+}
+.btn-select-garage,
+.btn-select-winners {
+  width: 150px;
+  height: 30px;
+  background: green;
+  color: black;
+  font-size: 16px;
+}

@@ -1,0 +1,14 @@
+.garage-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title,
+.total-number {
+  font-size: 32px;
+}
+.subtitle,
+.page {
+  font-size: 20px;
+}

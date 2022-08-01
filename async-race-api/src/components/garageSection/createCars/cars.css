@@ -1,7 +1,17 @@
 .car {
+  margin-bottom: 1%;
   display: flex;
   flex-direction: column;
   border-bottom: 3px dotted white;
+}
+.select-car,
+.remove-car {
+  width: 70px;
+  height: 30px;
+  border: 2px solid rgb(196, 199, 19);
+  border-radius: 10%;
+  background: rgb(196, 199, 19);
+  color: green;
 }
 .select-remove-btn-item {
   margin-bottom: 1%;

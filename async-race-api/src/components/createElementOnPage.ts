@@ -1,4 +1,5 @@
 export function createElementOnPage(
+  document: Document,
   htmlElement: string,
   elemClass: string,
 ) {

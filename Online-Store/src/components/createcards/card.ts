@@ -1,5 +1,5 @@
 import { IData } from '../types/interfaces';
-import { basket } from '../basket/basket';
+import { addAndRemoveItemFromBasket } from '../basket/basket';
 
 export function createCard(data: Array<IData>): void {
   const cards = document.querySelector('.cards') as HTMLDivElement;
@@ -23,5 +23,5 @@ export function createCard(data: Array<IData>): void {
     `;
     cards.append(cardContainer);
   });
-  basket();
+  addAndRemoveItemFromBasket();
 }

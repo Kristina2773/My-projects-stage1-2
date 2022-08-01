@@ -10,10 +10,10 @@ export interface IData {
 }
 
 export interface IFilter {
-  filterBySize?: Array<string>;
-  filterByColor?: Array<string>;
-  filterByBrand?: Array<string>;
-  filterByYear?: Array<string>;
-  filterByQuantity?: Array<string>;
-  isPopular?: Array<string>;
+  filterBySize: Array<string>;
+  filterByColor: Array<string>;
+  filterByBrand: Array<string>;
+  filterByYear: Array<string>;
+  filterByQuantity: Array<string>;
+  isPopular: Array<string>;
 }

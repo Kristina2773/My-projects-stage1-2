@@ -9,12 +9,12 @@ export function selectCard() {
   let copyData = data as Array<IData>;
   let array: Array<IData> = [];
 
-  const brandArr = filters.filterByBrand as Array<string>;
-  const sizeArr = filters.filterBySize as Array<string>;
-  const colorArr = filters.filterByColor as Array<string>;
-  const popularArr = filters.isPopular as Array<string>;
-  const stockArr = filters.filterByQuantity as Array<string>;
-  const yearArr = filters.filterByYear as Array<string>;
+  const brandArr = filters.filterByBrand;
+  const sizeArr = filters.filterBySize;
+  const colorArr = filters.filterByColor;
+  const popularArr = filters.isPopular;
+  const stockArr = filters.filterByQuantity;
+  const yearArr = filters.filterByYear;
 
   if (brandArr.length > 0) {
     copyData.forEach((item) => {

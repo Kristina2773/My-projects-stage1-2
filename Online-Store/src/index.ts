@@ -1,4 +1,3 @@
-// import App from './components/app/app';
 import './components/createcards/card.css';
 import './components/rangeFilter/rangeFilter.css';
 import './components/search/search.css';

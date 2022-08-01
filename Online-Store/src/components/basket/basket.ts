@@ -1,5 +1,5 @@
 import { setLocalStorage } from '../localStorage/setLocalStorage';
-import { addInBasket } from './addInBasket';
+import { updateBusketStorage } from './addInBasket';
 import { showBasket } from './showBasket';
 
 export function addAndRemoveItemFromBasket() {
@@ -21,7 +21,7 @@ export function addAndRemoveItemFromBasket() {
         target.classList.add('in-basket');
         const name = target.querySelector<HTMLDivElement>('.card__title');
         if (name) {
-          addInBasket(name.textContent as string);
+          updateBusketStorage(name.textContent as string);
         }
       } else {
         alert('Sorry, all slots are busy');
@@ -31,7 +31,7 @@ export function addAndRemoveItemFromBasket() {
       target.classList.remove('in-basket');
       const name = target.querySelector<HTMLDivElement>('.card__title');
       if (name) {
-        addInBasket(name.textContent as string);
+        updateBusketStorage(name.textContent as string);
       }
     }
   });

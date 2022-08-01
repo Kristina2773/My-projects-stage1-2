@@ -1,4 +1,4 @@
-export const filter: object = {
+export const defaultFilter: object = {
   filterByBrand: [],
   filterBySize: [],
   filterByColor: [],

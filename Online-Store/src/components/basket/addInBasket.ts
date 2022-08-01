@@ -1,6 +1,6 @@
 import { setLocalStorage } from '../localStorage/setLocalStorage';
 
-export function addInBasket(name: string) {
+export function updateBusketStorage(name: string) {
   const basket = JSON.parse(localStorage.getItem('inBasket') as string) as string[];
   if (basket.includes(name)) {
     const index = basket.indexOf(name);

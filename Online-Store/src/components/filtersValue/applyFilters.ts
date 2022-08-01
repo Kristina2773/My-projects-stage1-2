@@ -1,5 +1,5 @@
 import { setLocalStorage } from '../localStorage/setLocalStorage';
-import { filter } from './filter';
+import { defaultFilter } from './filter';
 import { IFilter, IData } from '../types/interfaces';
 import { addFilters } from './addFilters';
 import { changeFilter } from './changeFilter';
@@ -27,23 +27,19 @@ export function applyFilters() {
   const dataBuild = JSON.parse(localStorage.getItem('Data') as string) as IData;
   const popularBtn = document.querySelector<HTMLInputElement>('.filter-value__btn_popular');
   if (!filtersOptions) {
-    const filt = filter as IFilter;
-    setLocalStorage('filters', filt);
+    const filter = defaultFilter as IFilter;
+    setLocalStorage('filters', filter);
     changeFilter();
   } else {
     const isPopular = filtersOptions.isPopular;
-    if (isPopular) {
-      if (popularBtn) {
-        if (isPopular.length > 0) {
-          popularBtn.checked = true;
-          changeFilter();
-        }
-      }
+    if (isPopular && popularBtn && isPopular.length > 0) {
+      popularBtn.checked = true;
+      changeFilter();
     }
   }
   if (!dataBuild) {
-    const dat: IData[] = [];
-    setLocalStorage('Data', dat);
+    const dataStorage: IData[] = [];
+    setLocalStorage('Data', dataStorage);
   }
 
   if (goddesBrandBtn && fairyBrandBtn && calzedoniaBrandBtn && roxyBrandBtn && ruxaraBrandBtn) {
@@ -51,7 +47,7 @@ export function applyFilters() {
       elem.addEventListener('click', (): void => {
         const dataSetBrand = elem.dataset.brand as string;
         const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
-        const filterBrand = filtersOptions.filterByBrand as string[];
+        const filterBrand = filtersOptions.filterByBrand;
         elem.classList.toggle('active-brand-btn');
         addFilters(dataSetBrand, filtersOptions, filterBrand);
       });
@@ -62,7 +58,7 @@ export function applyFilters() {
       elem.addEventListener('click', (): void => {
         const dataSetSize = elem.dataset.size as string;
         const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
-        const filterSize = filtersOptions.filterBySize as string[];
+        const filterSize = filtersOptions.filterBySize;
         elem.classList.toggle('active-size-btn');
         addFilters(dataSetSize, filtersOptions, filterSize);
       });
@@ -73,7 +69,7 @@ export function applyFilters() {
       elem.addEventListener('click', (): void => {
         const dataSetColor = elem.dataset.color as string;
         const filtersOptions = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
-        const filterColor = filtersOptions.filterByColor as string[];
+        const filterColor = filtersOptions.filterByColor;
         elem.classList.toggle('color-btn-active');
         addFilters(dataSetColor, filtersOptions, filterColor);
       });
@@ -89,7 +85,7 @@ export function applyFilters() {
           setLocalStorage('filters', filtersOptions);
           changeFilter();
         } else {
-          filtersOptions.isPopular = ['yes'];
+          filtersOptions.isPopular = data ? ['yes'] : [];
           setLocalStorage('filters', filtersOptions);
           changeFilter();
         }

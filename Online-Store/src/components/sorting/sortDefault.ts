@@ -17,5 +17,8 @@ export function sortDefault() {
     sortList.addEventListener('change', () => {
       sort(copyData);
     });
+    sortList.removeEventListener('change', () => {
+      sort(copyData);
+    });
   }
 }

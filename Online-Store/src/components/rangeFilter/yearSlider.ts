@@ -1,102 +1,36 @@
+import { baseSlider } from './baseSlider';
+import data from '../../database.json';
 import { setLocalStorage } from '../localStorage/setLocalStorage';
 import { IFilter } from '../types/interfaces';
-import { changeFilter } from '../filtersValue/changeFilter';
 
-export function rangeSliderYear(
-  SlideOne: string,
-  SlideTwo: string,
-  ValueOne: string,
-  ValueTwo: string,
-  Track: string,
-  minValue: number,
-  maxValue: number
-) {
-  const sliderOne = document.querySelector<HTMLInputElement>(SlideOne);
-  const sliderTwo = document.querySelector<HTMLInputElement>(SlideTwo);
-  const displayValOne = document.querySelector<HTMLSpanElement>(ValueOne);
-  const displayValTwo = document.querySelector<HTMLSpanElement>(ValueTwo);
-  const sliderTrack = document.querySelector<HTMLSpanElement>(Track);
+export function rangeSliderYear() {
+  let year: number[] = [];
+  data.forEach((elem): void => {
+    year.push(elem.releaseYear);
+  });
+  year = year.sort((a, b) => a - b);
   const yearEarlier = parseInt(JSON.parse(localStorage.getItem('yearEarlier') as string) as string);
   const yearLater = parseInt(JSON.parse(localStorage.getItem('yearLater') as string) as string);
-  const minGap = 0;
-  if (displayValOne && displayValTwo) {
-    displayValOne.textContent = String(yearEarlier);
-    displayValTwo.textContent = String(yearLater);
+
+  if (!yearEarlier && !yearLater) {
+    setLocalStorage('yearEarlier', year[0]);
+    setLocalStorage('yearLater', year[year.length - 1]);
   }
-  if (sliderOne) {
-    sliderOne.min = String(0);
-    sliderOne.max = String(maxValue - minValue);
-    sliderOne.value = String(yearEarlier - minValue);
-  }
-  if (sliderTwo) {
-    sliderTwo.min = String(0);
-    sliderTwo.max = String(maxValue - minValue);
-    sliderTwo.value = String(yearLater - minValue);
-  }
-  const sliderMaxValue: string = (sliderOne as HTMLInputElement).max;
-  setValue();
-  changeFilter();
-  if (sliderTrack && sliderOne && sliderTwo) {
-    sliderTrack.style.background = `linear-gradient(to right, 
-      #dadae5 ${(parseInt(sliderOne.value) / parseInt(sliderMaxValue)) * 100}% , 
-      #3264fe ${(parseInt(sliderOne.value) / parseInt(sliderMaxValue)) * 100}% , 
-      #3264fe ${(parseInt(sliderTwo.value) / parseInt(sliderMaxValue)) * 100}%, 
-      #dadae5 ${(parseInt(sliderTwo.value) / parseInt(sliderMaxValue)) * 100}%)`;
-  }
-  if (sliderOne) {
-    sliderOne.addEventListener('input', () => {
-      slideOne();
-      if (displayValOne && displayValTwo) {
-        setValue();
-        changeFilter();
-        setLocalStorage('yearEarlier', displayValOne.textContent);
-        setLocalStorage('yearLater', displayValTwo.textContent);
-      }
-    });
-  }
-  if (sliderTwo) {
-    sliderTwo.addEventListener('input', () => {
-      slideTwo();
-      if (displayValOne && displayValTwo) {
-        setValue();
-        changeFilter();
-        setLocalStorage('yearEarlier', displayValOne.textContent);
-        setLocalStorage('yearLater', displayValTwo.textContent);
-      }
-    });
-  }
-  function slideOne() {
-    if (sliderOne && sliderTwo && displayValOne) {
-      if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
-        sliderOne.value = String(parseInt(sliderTwo.value) - minGap);
-      }
-      displayValOne.textContent = String(parseInt(sliderOne.value) + minValue);
-    }
-    fillColor();
-  }
-  function slideTwo() {
-    if (sliderOne && sliderTwo && displayValTwo) {
-      if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
-        sliderTwo.value = String(parseInt(sliderOne.value) + minGap);
-      }
-      displayValTwo.textContent = String(parseInt(sliderTwo.value) + minValue);
-    }
-    fillColor();
-  }
-  function fillColor() {
-    if (sliderOne && sliderTwo && sliderTrack) {
-      const percent1 = (parseInt(sliderOne.value) / parseInt(sliderMaxValue)) * 100;
-      const percent2 = (parseInt(sliderTwo.value) / parseInt(sliderMaxValue)) * 100;
-      sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
-    }
-  }
-  function setValue() {
-    const filters = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
-    const year = filters.filterByYear as string[];
-    if (displayValOne && displayValTwo) {
-      year[0] = String(displayValOne.textContent);
-      year[1] = String(displayValTwo.textContent);
-      setLocalStorage('filters', filters);
-    }
-  }
+  const filters = JSON.parse(localStorage.getItem('filters') as string) as IFilter;
+  const valueYear = filters.filterByYear;
+  baseSlider(
+    '.release-slider-1',
+    '.release-slider-2',
+    '.year-earlier',
+    '.year-later',
+    '.slider-track-year',
+    year[0],
+    year[year.length - 1],
+    yearEarlier,
+    yearLater,
+    'yearLater',
+    'yearEarlier',
+    valueYear,
+    filters
+  );
 }

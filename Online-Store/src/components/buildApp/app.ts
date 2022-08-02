@@ -20,16 +20,28 @@ class App {
     sortList.addEventListener('change', () => {
       sortWithDataStorage();
     });
+    sortList.removeEventListener('change', () => {
+      sortWithDataStorage();
+    });
     searchField.addEventListener('click', () => {
+      searchWithDataStorage();
+    });
+    searchField.removeEventListener('click', () => {
       searchWithDataStorage();
     });
     btnFilters?.forEach((btn) => {
       btn.addEventListener('click', () => {
         resetFilters();
       });
+      btn.removeEventListener('click', () => {
+        resetFilters();
+      });
     });
     btnSettings?.forEach((btn) => {
       btn.addEventListener('click', () => {
+        clearLocalStorage();
+      });
+      btn.removeEventListener('click', () => {
         clearLocalStorage();
       });
     });

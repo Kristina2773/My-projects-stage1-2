@@ -11,7 +11,6 @@ export function addAndRemoveItemFromBasket() {
     setLocalStorage('inBasket', []);
   }
   showBasket();
-  // cards.forEach((card): void => {
   cards.addEventListener('click', (event): void => {
     const target = event.target as HTMLElement;
     if (!target.classList.contains('in-basket')) {
@@ -35,5 +34,4 @@ export function addAndRemoveItemFromBasket() {
       }
     }
   });
-  // });
 }

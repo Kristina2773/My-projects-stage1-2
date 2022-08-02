@@ -7,7 +7,9 @@ export function createCard(data: Array<IData>): void {
     cards.innerHTML = '';
   }
   data.forEach((item: IData) => {
+    const fragment = new DocumentFragment();
     const cardContainer = document.createElement('div');
+    fragment.append(cardContainer);
     cardContainer.classList.add('card');
     cardContainer.innerHTML = `
     <h3 class="card__title">${item.title}</h3>
@@ -21,7 +23,7 @@ export function createCard(data: Array<IData>): void {
       <p>Popular: ${item.isPopular}</p>
     </div>
     `;
-    cards.append(cardContainer);
+    cards.append(fragment);
   });
   addAndRemoveItemFromBasket();
 }

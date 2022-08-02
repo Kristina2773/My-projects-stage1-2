@@ -2,7 +2,7 @@ import { IFilter, IData } from '../types/interfaces';
 import { setLocalStorage } from '../localStorage/setLocalStorage';
 import { sortDefault } from '../sorting/sortDefault';
 import { slider } from '../rangeFilter/sliders';
-import { filter } from '../filtersValue/filter';
+import { defaultFilter } from '../filtersValue/filter';
 import data from '../../database.json';
 import { removeActive } from './removeActive';
 
@@ -26,8 +26,8 @@ export function resetFilters() {
   setLocalStorage('stockMore', stock[stock.length - 1]);
   slider();
   if (filtersOptions) {
-    const filt = filter;
-    setLocalStorage('filters', filt);
+    const filter = defaultFilter;
+    setLocalStorage('filters', filter);
   }
   if (dataBuild) {
     const dat: IData[] = [];

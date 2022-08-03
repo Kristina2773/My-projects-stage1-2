@@ -30,7 +30,6 @@ const baseConfig = {
       images: path.resolve(__dirname, './assets/svg/rss.svg'),
     },
   },
-  watch: true,
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '../dist'),

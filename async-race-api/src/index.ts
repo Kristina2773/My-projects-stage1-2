@@ -1,7 +1,3 @@
-// import App from './components/buildApp/app';
-
-// const app = new App();
-// app.start();
 import './global.css';
 import { addSelectPageButtons } from './components/pageButtons/addSelectPageButtons';
 import { addSelectSettings } from './components/selectSettingsContainer/addSelectSettings';

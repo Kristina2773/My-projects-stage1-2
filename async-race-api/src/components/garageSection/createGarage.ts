@@ -3,7 +3,7 @@ import { createElementOnPage } from '../createElementOnPage';
 
 export function createGarage(totalNumber: number, page: number) {
   const main = document.querySelector('.main');
-  const garageContainer = createElementOnPage('div', 'garage-container');
+  const garageContainer = createElementOnPage(document, 'div', 'garage-container');
   garageContainer.innerHTML = `
     <div class = "garage-title">
       <span class = "title">Garage</span>

@@ -1,31 +1,79 @@
 import './selectSettingsContainer.css';
+import './garage.css';
+import './pageButtons.css';
 import { createElementOnPage } from "../createElementOnPage";
+import { Car } from './createCars/carView';
+import { IPage } from '../interfaces/interfaces';
 
-export function addSelectSettings() {
-
-}
-
-interface Page {
-  render: () => void;
-}
-
-class GaragePage implements Page {
-  constructor() {
-    
+export class GaragePage implements IPage {
+  totalNumber: number;
+  page: number;
+  constructor(totalNumber: number, page: number) {
+    this.totalNumber = totalNumber,
+    this.page = page;
   }
   public render() {
+    this.addSelectBtnSectionToMain();
+    this.addPageBtnsContainerToBtnSection();
+    this.addPageButtonsToContainer();
     this.addSelectSettingsSectionToMain();
-    this.renderGarageTitle();
+    this.addGarageContainer();
     this.addChildrenToSelectSettingsSection();
+    this.renderCars();
   }
   
-  private renderGarageTitle() {
-    
+  private renderGarageContainer() {
+    const garageContainer = createElementOnPage(document, 'div', 'garage-container');
+    garageContainer.innerHTML = `
+    <div class = "garage-title">
+      <span class = "title">Garage</span>
+      <span class = "total-number">(${this.totalNumber})</span>
+    </div>
+    <div class = "page-title">
+      <span class = "subtitle">Page</span>
+      <span class = "page">#${this.page}</span>
+    </div>
+    <div class = "cars-in-garage"></div>
+  `
+  return garageContainer;
+  }
+  private addSelectBtnSectionToMain() {
+    const selectBtnSection = createElementOnPage(document, 'section', 'select-btn-section');
+    const main = document.querySelector('.main') as HTMLElement;
+    main.append(selectBtnSection);
+  }
+  private addPageBtnsContainerToBtnSection() {
+    const selectBtnSection = document.querySelector('.select-btn-section') as HTMLElement;
+    const pageBtnsContainer = createElementOnPage(document, 'div', 'page-btns-container');
+    selectBtnSection.append(pageBtnsContainer);
+  }
+  private renderBtnSelectPageGarage() {
+    const btnSelectGarage = createElementOnPage(document, 'button', 'btn-select-garage');
+    btnSelectGarage.textContent = 'TO GARAGE';
+    btnSelectGarage.setAttribute('type', 'submit');
+    return btnSelectGarage;
+  }
+  private renderBtnSelectWinners() {
+    const btnSelectWinners = createElementOnPage(document, 'button', 'btn-select-winners');
+    btnSelectWinners.textContent = 'TO WINNERS';
+    btnSelectWinners.setAttribute('type', 'submit');
+    return btnSelectWinners;
+  }
+  private addPageButtonsToContainer() {
+    const btnSelectGarage = this.renderBtnSelectPageGarage();
+    const btnSelectWinners = this.renderBtnSelectWinners();
+    const pageBtnsContainer = document.querySelector('.page-btns-container');
+    pageBtnsContainer?.append(btnSelectGarage, btnSelectWinners);
   }
   private addSelectSettingsSectionToMain() {
     const main = document.querySelector('.main') as HTMLElement;
     const selectSettingsSection = createElementOnPage(document, 'section', 'select-settings-section');
     main.append(selectSettingsSection);
+  }
+  private addGarageContainer() {
+    const main = document.querySelector('.main') as HTMLElement;
+    const garageContainer = this.renderGarageContainer();
+    main.append(garageContainer);
   }
   private renderCarsCreationInput() {
     const inputForCreateNewItem = createElementOnPage(document, 'input', 'input-create-item');
@@ -89,7 +137,7 @@ class GaragePage implements Page {
     return btnGenerateItems;
   }
   private renderUpdateContainer() {
-    const inputForUpdateNewItem = this.renderCarsUpdateColorInput();
+    const inputForUpdateNewItem = this.renderCarsUpdateCarInput();
     const inputUpdateColorOfItem = this.renderCarsUpdateColorInput();
     const btnUpdateItem = this.renderCarsUpdateButton();
     const updateItemContainer = createElementOnPage(document, 'div', 'update-item-container');
@@ -111,45 +159,8 @@ class GaragePage implements Page {
     const selectSettingsBtnContainer = this.renderSettingsBtnContainer();
     selectSettingsSection.append(createNewItemContainer, updateItemContainer, selectSettingsBtnContainer);
   }
-}
-
-class WinnersPage implements Page {
-  constructor() {
-   // 
-  }
-
-  public render() {
-    this.renderWinnersTitle();
-    this.renderWinners();
-  }
-  
-  renderWinnersTitle() {
-    throw new Error("Method not implemented.");
-  }
-  renderWinners() {
-    throw new Error("Method not implemented.");
-  }
-}
-
-class AppView {
-  private readonly garagePage: GaragePage;
-  private readonly winnersPage: WinnersPage;
-
-  constructor() {
-    this.garagePage = new GaragePage();
-    this.winnersPage = new WinnersPage();
-  }
-
-  public renderPage() {
-    this.renderGaragePage();
-    this.renderWinnerPage();
-  }
-
-  private renderGaragePage() {
-    this.garagePage.render();
-  }
-
-  private renderWinnerPage() {
-    this.winnersPage.render();
+  private renderCars() {
+    const car = new Car('Skoda', 'Octavia', 'pink');
+    car.render();
   }
 }

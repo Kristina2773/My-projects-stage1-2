@@ -2,8 +2,8 @@ import './selectSettingsContainer.css';
 import './garage.css';
 import './pageButtons.css';
 import { createElementOnPage } from "../createElementOnPage";
-import { Car } from './createCars/carView';
 import { IPage } from '../interfaces/interfaces';
+import { AppController } from '../AppController/appController';
 
 export class GaragePage implements IPage {
   totalNumber: number;
@@ -19,7 +19,6 @@ export class GaragePage implements IPage {
     this.addSelectSettingsSectionToMain();
     this.addGarageContainer();
     this.addChildrenToSelectSettingsSection();
-    this.renderCars();
   }
   
   private renderGarageContainer() {
@@ -27,7 +26,7 @@ export class GaragePage implements IPage {
     garageContainer.innerHTML = `
     <div class = "garage-title">
       <span class = "title">Garage</span>
-      <span class = "total-number">(${this.totalNumber})</span>
+      <span class = "total-number">${this.totalNumber}</span>
     </div>
     <div class = "page-title">
       <span class = "subtitle">Page</span>
@@ -81,7 +80,7 @@ export class GaragePage implements IPage {
     return inputForCreateNewItem;
   }
   private renderCarsCreationColorInput() {
-    const inputAddColorToItem = createElementOnPage(document, 'input', 'create-color');
+    const inputAddColorToItem = createElementOnPage(document, 'input', 'input-create-color');
     inputAddColorToItem.setAttribute('type', 'color');
     return inputAddColorToItem;
 
@@ -159,8 +158,8 @@ export class GaragePage implements IPage {
     const selectSettingsBtnContainer = this.renderSettingsBtnContainer();
     selectSettingsSection.append(createNewItemContainer, updateItemContainer, selectSettingsBtnContainer);
   }
-  private renderCars() {
-    const car = new Car('Skoda', 'Octavia', 'pink');
-    car.render();
+  private renderPageNumbers() {
+    const pageNumbersContainer = createElementOnPage(document, 'div', 'page-number-container');
+    
   }
 }

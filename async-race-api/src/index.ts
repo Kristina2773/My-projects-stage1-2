@@ -1,7 +1,8 @@
 import './global.css';
 import { createMainOnPage } from './components/createMainOnPage';
-import { AppView } from './components/AppView/appView';
+import { AppController } from './components/AppController/appController';
 
 createMainOnPage();
-const app = new AppView();
-app.renderPage();
+const app = new AppController();
+app.render();
+

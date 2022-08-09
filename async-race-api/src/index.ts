@@ -1,8 +1,13 @@
 import './global.css';
-import { createMainOnPage } from './components/createMainOnPage';
-import { AppController } from './components/AppController/appController';
+import { AppController } from './components/App/AppController/appController';
+import { setLocalStorage } from './components/commonFunction/localStorage/localStorage';
 
-createMainOnPage();
+const page = JSON.parse(localStorage.getItem('activePage') as string) as number;
+
+if (page) {
+  setLocalStorage('activePage', 1);
+}
 const app = new AppController();
-app.render();
-
+app.render().then((result) =>
+  result, (error: Error) =>
+  console.log(error));

@@ -5,8 +5,6 @@
         "node": true
     },
     "extends": [
-        "plugin:prettier/recommended",
-        "prettier",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -26,6 +24,15 @@
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": 2,
         "max-lines-per-function": ["error", 40],
-        "comma-dangle": ["always", "never"]
+        "comma-dangle": [2, "always-multiline"],
+        "implicit-arrow-linebreak": ["error", "below"],
+        "max-len": ["error", { "code": 120 }],
+        "@typescript-eslint/no-misused-promises": [
+            "error",
+            {
+                "checksVoidReturn": false
+            }
+        ],
+        "consistent-return": 0
     }
 }

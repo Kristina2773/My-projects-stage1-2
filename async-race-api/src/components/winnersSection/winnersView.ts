@@ -8,7 +8,7 @@ export class WinnersPage implements IPage {
 
   constructor(totalNumber: number, page: number) { this.totalNumber = totalNumber; this.page = page; }
 
-  public render() {
+  public render(): void {
     this.addWinnersContainer();
     this.renderWinnersTitle();
     this.renderPageTitle();
@@ -16,7 +16,7 @@ export class WinnersPage implements IPage {
     this.renderPaginationButtons();
   }
 
-  private renderWinnersContainer() {
+  private renderWinnersContainer(): HTMLElement {
     const winnersContainer = createElementOnPage(document, 'div', 'garage-container');
     winnersContainer.innerHTML = `
     <div class = "winners-title"> </div>
@@ -27,13 +27,13 @@ export class WinnersPage implements IPage {
     return winnersContainer;
   }
 
-  private addWinnersContainer() {
+  private addWinnersContainer(): void {
     const main = document.querySelector('.main') as HTMLElement;
     const winnersContainer = this.renderWinnersContainer();
     main.append(winnersContainer);
   }
 
-  private renderWinnersTable() {
+  private renderWinnersTable(): void {
     const winnersTable = document.querySelector('.winners-table') as HTMLDivElement;
     winnersTable.innerHTML = `
     <div class = "table-row">
@@ -46,7 +46,7 @@ export class WinnersPage implements IPage {
     `;
   }
 
-  private renderPaginationButtons() {
+  private renderPaginationButtons(): void {
     const paginationButtonsContainer = document.querySelector('.pagination-buttons') as HTMLDivElement;
     paginationButtonsContainer.innerHTML = `
       <button class = "prev-page"><<< Prev</button>
@@ -54,7 +54,7 @@ export class WinnersPage implements IPage {
     `;
   }
 
-  private renderWinnersTitle() {
+  private renderWinnersTitle(): void {
     const winnersTitle = document.querySelector('.winners-title') as HTMLDivElement;
     winnersTitle.innerHTML = `
       <span class = "title">Winners</span>
@@ -62,7 +62,7 @@ export class WinnersPage implements IPage {
     `;
   }
 
-  private renderPageTitle() {
+  private renderPageTitle(): void {
     const pageTitle = document.querySelector('.page-title') as HTMLDivElement;
     pageTitle.innerHTML = `
       <span class = "subtitle">Page</span>

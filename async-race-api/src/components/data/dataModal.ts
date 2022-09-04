@@ -2,10 +2,10 @@ import { DataResponse } from '../interfaces/interfaces';
 import { CarType } from '../interfaces/interfaces';
 
 export class DataModal {
-  public async getOrDeleteData(method: string, url: string): Promise<CarType | CarType[] | string> {
+  public async getData(url: string): Promise<CarType | CarType[] | string> {
     try {
       const response = await fetch(url, {
-        method: method,
+        method: 'GET',
       });
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
@@ -14,17 +14,36 @@ export class DataModal {
       return result;
     } catch (error) {
       if (error instanceof Error) {
-        return error.message;
+        throw new Error(error.message);
       }
       const unexpectedErrorMessage = 'An unexpected error occurred';
-      return unexpectedErrorMessage;
+      throw new Error(unexpectedErrorMessage);
     }
   }
 
-  public async putOrPostData(method: string, url: string, data: DataResponse) {
+  public async deleteData(url: string): Promise<CarType | CarType[] | string> {
     try {
       const response = await fetch(url, {
-        method: method,
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+      const result = await response.json() as Promise<CarType | CarType[] | string>;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      const unexpectedErrorMessage = 'An unexpected error occurred';
+      throw new Error(unexpectedErrorMessage);
+    }
+  }
+
+  public async putData(url: string, data: DataResponse) {
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json',
@@ -37,10 +56,33 @@ export class DataModal {
       return result;
     } catch (error) {
       if (error instanceof Error) {
-        return error.message;
+        throw new Error(error.message);
       }
       const unexpectedErrorMessage = 'An unexpected error occurred';
-      return unexpectedErrorMessage;
+      throw new Error(unexpectedErrorMessage);
+    }
+  }
+
+  public async postData(url: string, data: DataResponse) {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+      const result = await response.json() as Promise<CarType | CarType[] | string>;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      const unexpectedErrorMessage = 'An unexpected error occurred';
+      throw new Error(unexpectedErrorMessage);
     }
   }
 }

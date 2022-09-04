@@ -3,6 +3,9 @@ import { createElementOnPage } from '../../commonFunction/createElementOnPage/cr
 import { CarType, ICarItem } from '../../interfaces/interfaces';
 import { DataController } from '../../data/dataController';
 import { DataModal } from '../../data/dataModal';
+import { url } from '../../const/data-const';
+import { initialColor } from '../../const/car-const';
+
 export class Car implements ICarItem {
   name: string;
 
@@ -10,32 +13,38 @@ export class Car implements ICarItem {
 
   colorCar: string;
 
+  url: string;
+
+  initialColor: string;
+
   constructor(name: string, id: number, colorCar: string) {
     this.name = name;
     this.id = id;
     this.colorCar = colorCar;
+    this.url = url;
+    this.initialColor = initialColor;
   }
 
-  public async render() {
+  public async render(): Promise<void> {
     this.addCarContainertoCarsInGarageContainer();
     this.addContainersToCar();
     this.removeCar(this.id);
     await this.selectCarForUpdate(this.id);
   }
 
-  private renderCarContainer() {
+  private renderCarContainer(): HTMLElement {
     const car = createElementOnPage(document, 'div', 'car');
     car.dataset.id = String(this.id);
     return car;
   }
 
-  private addCarContainertoCarsInGarageContainer() {
+  private addCarContainertoCarsInGarageContainer(): void {
     const carsInGarage = document.querySelector('.cars-in-garage');
     const car = this.renderCarContainer();
     carsInGarage?.append(car);
   }
 
-  private renderContainerForButtonsAndTitleCar() {
+  private renderContainerForButtonsAndTitleCar(): HTMLElement {
     const selectRemoveBtnsContainer = createElementOnPage(document, 'div', 'select-remove-btn-item');
     const btnSelectCar = this.renderBtnSelectCar();
     const btnRemoveCar = this.renderBtnRemoveCar();
@@ -44,7 +53,7 @@ export class Car implements ICarItem {
     return selectRemoveBtnsContainer;
   }
 
-  private renderBtnSelectCar() {
+  private renderBtnSelectCar(): HTMLElement {
     const btnSelectCar = createElementOnPage(document, 'button', 'select-car');
     btnSelectCar.classList.add(`select-${this.id}`);
     btnSelectCar.textContent = 'SELECT';
@@ -53,7 +62,7 @@ export class Car implements ICarItem {
     return btnSelectCar;
   }
 
-  private renderBtnRemoveCar() {
+  private renderBtnRemoveCar(): HTMLElement {
     const btnRemoveCar = createElementOnPage(document, 'button', 'remove-car');
     btnRemoveCar.classList.add(`remove-${this.id}`);
     btnRemoveCar.textContent = 'REMOVE';
@@ -62,14 +71,14 @@ export class Car implements ICarItem {
     return btnRemoveCar;
   }
 
-  private renderCarModelTitle() {
+  private renderCarModelTitle(): HTMLElement {
     const carModelContainer = createElementOnPage(document, 'span', 'car-name-and-model');
     carModelContainer.classList.add(`car-name-${this.id}`);
     carModelContainer.textContent = `${this.name}`;
     return carModelContainer;
   }
 
-  private addContainersToCar() {
+  private addContainersToCar(): void {
     const car = document.querySelectorAll('.car');
     const selectRemoveBtnsContainer = this.renderContainerForButtonsAndTitleCar();
     const controlButtonsContainer = this.renderContainerControlButtons();
@@ -78,7 +87,7 @@ export class Car implements ICarItem {
       elem.append(selectRemoveBtnsContainer, controlButtonsContainer, carImgAndFlagContainer));
   }
 
-  private renderContainerControlButtons() {
+  private renderContainerControlButtons(): HTMLElement {
     const controlButtonsContainer = createElementOnPage(document, 'div', 'control-buttons');
     const startBtn = this.renderStartBtn();
     const stopBtn = this.renderStopBtn();
@@ -86,7 +95,7 @@ export class Car implements ICarItem {
     return controlButtonsContainer;
   }
 
-  private renderStartBtn() {
+  private renderStartBtn(): HTMLElement {
     const startBtn = createElementOnPage(document, 'button', 'start-btn');
     startBtn.classList.add(`start-${this.id}`);
     startBtn.textContent = 'A';
@@ -94,7 +103,7 @@ export class Car implements ICarItem {
     return startBtn;
   }
 
-  private renderStopBtn() {
+  private renderStopBtn(): HTMLElement {
     const stopBtn = createElementOnPage(document, 'button', 'stop-btn');
     stopBtn.classList.add(`stop-${this.id}`);
     stopBtn.classList.add('active');
@@ -103,7 +112,7 @@ export class Car implements ICarItem {
     return stopBtn;
   }
 
-  private renderCarImgAndFlagContainer() {
+  private renderCarImgAndFlagContainer(): HTMLElement {
     const carImgAndFlagContainer = createElementOnPage(document, 'div', 'car-and-flag-img');
     carImgAndFlagContainer.innerHTML = `
       <svg class="car-svg car-svg-${this.id}" 
@@ -120,7 +129,7 @@ export class Car implements ICarItem {
     return carImgAndFlagContainer;
   }
 
-  private removeCar(id: number) {
+  private removeCar(id: number): void {
     const dataController = new DataController();
     const removeButtons = document.querySelectorAll<HTMLButtonElement>(`.remove-${id}`);
     removeButtons.forEach((button) => {
@@ -142,35 +151,45 @@ export class Car implements ICarItem {
     });
   }
 
-  private async selectCarForUpdate(id: number) {
-    const [updateInput, updateColorInput] = ['.input-update-item', '.update-color'].map((item) =>
-      document.querySelector<HTMLInputElement>(item));
-
+  private async selectCarForUpdate(id: number): Promise<void> {
     const updateButton = document.querySelector<HTMLButtonElement>('.update-item-btn');
     const selectButton = document.querySelector<HTMLButtonElement>(`.select-${id}`);
+    const dataModal = new DataModal();
+    const data = await dataModal.getData(`${this.url}/garage/${id}`) as CarType;
+    const updateData = await dataModal.getData(`${this.url}/garage/${id}`) as CarType;
+    const clickSelectBtn = () => { this.clickSelectButton(data); };
+    const clickUpdateBtn = async () => { await this.clickUpdateButton(id, updateData); };
+    selectButton?.removeEventListener('click', clickSelectBtn);
+    updateButton?.removeEventListener('click', clickUpdateBtn);
+
+    selectButton?.addEventListener('click', clickSelectBtn);
+    updateButton?.addEventListener('click', clickUpdateBtn);
+  }
+
+  private clickSelectButton(data: CarType): void {
+    const [updateInput, updateColorInput] = ['.input-update-item', '.update-color'].map((item) =>
+      document.querySelector(item) as HTMLInputElement);
+    if (updateInput && updateColorInput) {
+      updateInput.value = data.name;
+      updateColorInput.value = data.color;
+    }
+  }
+
+  private async clickUpdateButton(id: number, updateData: CarType): Promise<void> {
+    const [updateInput, updateColorInput] = ['.input-update-item', '.update-color'].map((item) =>
+      document.querySelector(item) as HTMLInputElement);
     const carImg = document.querySelector<HTMLElement>(`.car-svg-${id}`);
     const carName = document.querySelector<HTMLSpanElement>(`.car-name-${id}`);
     const dataController = new DataController();
-    const dataModal = new DataModal();
-    const data = await dataModal.getOrDeleteData('GET', `http://127.0.0.1:3000/garage/${id}`) as CarType;
-    selectButton?.addEventListener('click', () => {
-      if (updateInput && updateColorInput) {
-        updateInput.value = data.name;
-        updateColorInput.value = data.color;
-      }
-      updateButton?.addEventListener('click', async () => {
-        await dataController.putData(id);
-        const updateData = await dataModal.getOrDeleteData('GET', `http://127.0.0.1:3000/garage/${id}`) as CarType;
-        if (carImg && carName) {
-          carImg.style.fill = updateData.color;
-          carName.innerText = updateData.name;
-        }
-        if (updateInput && updateColorInput) {
-          const initialColor = '#000000';
-          updateInput.value = '';
-          updateColorInput.value = initialColor;
-        }
-      });
-    });
+    await dataController.putData(id);
+
+    if (carImg && carName) {
+      carImg.style.fill = updateData.color;
+      carName.innerText = updateData.name;
+    }
+    if (updateInput && updateColorInput) {
+      updateInput.value = '';
+      updateColorInput.value = this.initialColor;
+    }
   }
 }

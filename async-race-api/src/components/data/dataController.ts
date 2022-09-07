@@ -1,6 +1,5 @@
 import { IDataController } from '../interfaces/interfaces';
 import { DataModal } from './dataModal';
-import { CarType } from '../interfaces/interfaces';
 import { url } from '../const/data-const';
 
 export class DataController implements IDataController {
@@ -13,33 +12,33 @@ export class DataController implements IDataController {
     this.dataModal = new DataModal();
   }
 
-  public async getData(): Promise<CarType | CarType[] | string> {
-    const data = await this.dataModal.getData(`${this.url}/garage`) as CarType[];
+  public async getData<T>(): Promise<T> {
+    const data: T = await this.dataModal.getData(`${this.url}/garage`);
     return data;
   }
 
-  public async postData(): Promise<CarType | CarType[] | string> {
+  public async postData<T>(): Promise<T> {
     const [createInput, createColor] = ['.input-create-item', '.input-create-color']
       .map((item) =>
         document.querySelector<HTMLInputElement>(item));
 
-    const data = await this.dataModal.postData(`${this.url}/garage`, {
+    const data = <T> await this.dataModal.postData(`${this.url}/garage`, {
       name: createInput?.value as string,
       color: createColor?.value as string,
     });
     return data;
   }
 
-  public async deleteData(id: number): Promise<CarType | CarType[] | string> {
-    const data = await this.dataModal.deleteData(`${this.url}/garage/${id}`);
+  public async deleteData<T>(id: number): Promise<T> {
+    const data = <T> await this.dataModal.deleteData(`${this.url}/garage/${id}`);
     return data;
   }
 
-  public async putData(id: number): Promise<CarType | CarType[] | string> {
+  public async putData<T>(id: number): Promise<T> {
     const [updateInput, updateColorInput] = ['.input-update-item', '.update-color']
       .map((item) =>
         document.querySelector<HTMLInputElement>(item));
-    const data = await this.dataModal.putData(`${this.url}/garage/${id}`, {
+    const data = <T> await this.dataModal.putData(`${this.url}/garage/${id}`, {
       name: updateInput?.value as string,
       color: updateColorInput?.value as string,
     });

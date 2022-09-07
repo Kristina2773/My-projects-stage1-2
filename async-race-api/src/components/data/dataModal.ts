@@ -1,8 +1,7 @@
 import { DataResponse } from '../interfaces/interfaces';
-import { CarType } from '../interfaces/interfaces';
 
 export class DataModal {
-  public async getData(url: string): Promise<CarType | CarType[] | string> {
+  public async getData<T>(url: string): Promise<T> {
     try {
       const response = await fetch(url, {
         method: 'GET',
@@ -10,7 +9,7 @@ export class DataModal {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-      const result = await response.json() as Promise<CarType | CarType[] | string>;
+      const result = <T> await response.json();
       return result;
     } catch (error) {
       if (error instanceof Error) {
@@ -21,7 +20,7 @@ export class DataModal {
     }
   }
 
-  public async deleteData(url: string): Promise<CarType | CarType[] | string> {
+  public async deleteData<T>(url: string): Promise<T> {
     try {
       const response = await fetch(url, {
         method: 'DELETE',
@@ -29,7 +28,7 @@ export class DataModal {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-      const result = await response.json() as Promise<CarType | CarType[] | string>;
+      const result = <T> await response.json();
       return result;
     } catch (error) {
       if (error instanceof Error) {
@@ -40,7 +39,7 @@ export class DataModal {
     }
   }
 
-  public async putData(url: string, data: DataResponse) {
+  public async putData<T>(url: string, data: DataResponse) {
     try {
       const response = await fetch(url, {
         method: 'PUT',
@@ -52,7 +51,7 @@ export class DataModal {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-      const result = await response.json() as Promise<CarType | CarType[] | string>;
+      const result = <T> await response.json();
       return result;
     } catch (error) {
       if (error instanceof Error) {
@@ -63,7 +62,7 @@ export class DataModal {
     }
   }
 
-  public async postData(url: string, data: DataResponse) {
+  public async postData<T>(url: string, data: DataResponse) {
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -75,7 +74,7 @@ export class DataModal {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-      const result = await response.json() as Promise<CarType | CarType[] | string>;
+      const result = <T> await response.json();
       return result;
     } catch (error) {
       if (error instanceof Error) {

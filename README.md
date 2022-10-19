@@ -3,7 +3,7 @@ Rolling Scopes - Stage1 and Stage2
 # Ссылки на deploy:
 
 1. [Shelter](https://kristina2773.github.io/My-projects-stage1-2/shelter/pages/main/)
-2. [Migration to Typescript](https://kristina2773.github.io/My-projects-stage1-2/mirgation-to-typescript/)
+2. [Migration to Typescript](https://kristina2773.github.io/My-projects-stage1-2/migration-to-typescript/)
 3. [Online store](https://kristina2773.github.io/My-projects-stage1-2/online-store/)
 4. [Presentation](https://youtu.be/bDB-OUIh6vk)
 
